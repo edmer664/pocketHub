@@ -15,11 +15,11 @@
     </li>
 
     <!-- TODO-->
-    {{-- <li class="nav-item">
+    <!-- <li class="nav-item">
         <a class="nav-link" href="messages.html">
             <i class="fas fa-fw fa-envelope"></i>
             <span>Messages</span></a>
-    </li> --}}
+    </li> -->
     <hr class="sidebar-divider d-none d-md-block">
     <div class="text-center d-none d-md-inline">
         <button class="rounded-circle border-0" id="sidebarToggle"></button>

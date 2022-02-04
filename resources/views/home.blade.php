@@ -7,20 +7,17 @@
             <div class="card-body w-100">
                 <div class="row no-gutters align-items-center">
                     <div class="col-auto mr-2">
-                        <img class="rounded-circle img-fluid" width="60" src="assets/img/undraw_profile.svg"
-                            alt="">
+                        <img class="rounded-circle img-fluid" width="60" src="assets/img/undraw_profile.svg" alt="">
                     </div>
                     <div class="col ">
                         <form action="">
                             <div class="input-group">
-                                <textarea class="form-control custom-control"
-                                    placeholder="What's in your Mind?" rows="3"
-                                    style="resize:none"></textarea>
+                                <textarea class="form-control custom-control" placeholder="What's in your Mind?"
+                                    rows="3" style="resize:none"></textarea>
                                 <button class="input-group-addon btn btn-primary">Send</button>
                             </div>
                         </form>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -30,8 +27,7 @@
             <div class="card mb-3">
                 <div class="row no-gutters">
                     <div class="col-auto  p-3">
-                        <img class="rounded-circle img-fluid" width="60" src="assets/img/undraw_profile.svg"
-                            alt="">
+                        <img class="rounded-circle img-fluid" width="60" src="assets/img/undraw_profile.svg" alt="">
                     </div>
                     <div class="col">
                         <div class="card-body">
