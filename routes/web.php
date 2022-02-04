@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 /*
@@ -21,8 +23,11 @@ Route::get('/',function(){
     return view('landing');
 });
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::group(['middleware'=>['auth','PreventBackHistory']], function(){
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::get('/profile', [UserController::class, 'profile'])->name('profile');
-Route::get('/edit', [UserController::class, 'edit'])->name('edit');
-Route::put('/edit', [UserController::class, 'update']);
+    Route::get('/profile', [UserController::class, 'profile'])->name('profile');
+    Route::get('/edit', [UserController::class, 'edit'])->name('edit');
+    Route::put('/edit', [UserController::class, 'update']);
+    
+});
