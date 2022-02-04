@@ -10,11 +10,6 @@ use App\Models\User;
 
 class UserController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public function profile(){
         return view('user.profile');
     }
