@@ -11,21 +11,21 @@
                 </div>
                 <div class="card-body">
                     <div class="tab-content">
-                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <ul class="nav nav-tabs" id="tab" role="tablist">
                             <li class="nav-item" role="presentation">
-                                <a class="nav-link active" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+                                <a class="nav-link active" id="profile-tab" data-toggle="tab" href="#profileInfo" role="tab"
                                     aria-controls="profile" aria-selected="true">Profile</a>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <a class="nav-link" id="password-tab" data-toggle="tab" href="#password" role="tab"
+                                <a class="nav-link" id="password-tab" data-toggle="tab" href="#changePassword" role="tab"
                                     aria-controls="password" aria-selected="false">Password</a>
                             </li>
                         </ul>
-                        <div class="tab-content" id="myTabContent">
-                            <div class="tab-pane fade show active" id="profile" role="tabpanel"
+                        <div class="tab-content" id="tabContent">
+                            <div class="tab-pane fade show active" id="profileInfo" role="tabpanel"
                                 aria-labelledby="profile-tab">
                                 <div class="active tab-pane" id="personal_info">
-                                    <form class="form-horizontal pt-3" method="POST" action="" id="UserInfoForm">
+                                    <form class="form-horizontal pt-3" method="POST" action="{{ route('updateInfo') }}" id="UserInfoForm">
                                         {{ csrf_field() }}
                                         {{ method_field('put') }}
                                         <div class="form-group row">
@@ -34,7 +34,9 @@
                                                 <input type="text" class="form-control" id="inputFirstName"
                                                     placeholder="First Name" value="{{ Auth::user()->first_name }}"
                                                     name="first_name">
-                                                <span class="text-danger error-text name_error"></span>
+                                                    @error('first_name')
+                                                        <span class="text-danger error-text name_error">{{ $message }}</span>
+                                                    @enderror
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -43,15 +45,19 @@
                                                 <input type="text" class="form-control" id="inputLastName"
                                                     placeholder="Last Name" value="{{ Auth::user()->last_name }}"
                                                     name="last_name">
-                                                <span class="text-danger error-text name_error"></span>
+                                                    @error('last_name')
+                                                        <span class="text-danger error-text name_error">{{ $message }}</span>
+                                                    @enderror
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" id="inputEmail"
+                                                <input type="email" class="form-control" id="inputEmail"
                                                     placeholder="Email" value="{{ Auth::user()->email }}" name="email">
-                                                <span class="text-danger error-text email_error"></span>
+                                                    @error('last_name')
+                                                        <span class="text-danger error-text name_error">{{ $message }}</span>
+                                                    @enderror
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -62,33 +68,39 @@
                                     </form>
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="password" role="tabpanel" aria-labelledby="password-tab">
-                                <div class="active tab-pane" id="personal_info">
-                                    <form class="form-horizontal  pt-3" method="POST" action="" id="UserInfoForm">
+                            <div class="tab-pane fade" id="changePassword" role="tabpanel" aria-labelledby="password-tab">
+                                <div class="active tab-pane" id="personal_password">
+                                    <form class="form-horizontal  pt-3" method="POST" action="{{ route('changePassword') }}" id="UserPasswordForm">
                                         {{ csrf_field() }}
                                         {{ method_field('put') }}
                                         <div class="form-group row">
                                             <label for="inputCurrent" class="col-sm-2 col-form-label">Current </label>
                                             <div class="col-sm-10">
-                                                <input type="password" class="form-control" id="inputCurrent"
-                                                    placeholder="Current" name="current">
-                                                <span class="text-danger error-text name_error"></span>
+                                                <input type="password" class="form-control" id="currentPassword"
+                                                    placeholder="Current" name="currentPassword">
+                                                    @error('currentPassword')
+                                                        <span class="text-danger error-text name_error">{{ $message }}</span>
+                                                    @enderror
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="inputNew" class="col-sm-2 col-form-label">New</label>
                                             <div class="col-sm-10">
-                                                <input type="password" class="form-control" id="inputNew"
-                                                    placeholder="New" name="last_name">
-                                                <span class="text-danger error-text name_error"></span>
+                                                <input type="password" class="form-control" id="newPassword"
+                                                    placeholder="New" name="newPassword">
+                                                    @error('newPassword')
+                                                        <span class="text-danger error-text name_error">{{ $message }}</span>
+                                                    @enderror
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="inputReType" class="col-sm-2 col-form-label">Re-type New</label>
                                             <div class="col-sm-10">
-                                                <input type="password" class="form-control" id="inputReType"
-                                                    placeholder="Re-type" name="email">
-                                                <span class="text-danger error-text email_error"></span>
+                                                <input type="password" class="form-control" id="reTypePassword"
+                                                    placeholder="Re-type" name="reTypePassword">
+                                                    @error('reTypePassword')
+                                                        <span class="text-danger error-text name_error">{{ $message }}</span>
+                                                    @enderror
                                             </div>
                                         </div>
                                         <div class="form-group row">

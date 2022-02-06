@@ -11,7 +11,7 @@
                 <h5 class="card-title">{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</h5>
                 <p class="card-text">{{ Auth::user()->email }}</p>
                 <p class="card-text"><small class="text-muted">Joined {{ Auth::user()->created_at }}</small></p>
-                <button class="btn btn-primary p-1"><a class="nav-link text-white" href="{{ route('edit') }}">
+                <button class="btn btn-primary p-1"><a class="nav-link text-white" href="{{ route('editInfo') }}">
                         <span>Edit profile</span></a></button>
             </div>
         </div>
