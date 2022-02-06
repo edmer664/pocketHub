@@ -25,10 +25,10 @@
                 <li class="nav-item dropdown no-arrow">
                     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
-                        <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+                        <span class="mr-2 d-none d-lg-inline text-gray-600 small name">
                             {{ Auth::user()->first_name }} {{ Auth::user()->last_name }}
                         </span>
-                        <img class="img-profile rounded-circle" src="assets/img/undraw_profile.svg">
+                        <img class="img-profile rounded-circle avatar" src="{{ url('storage/avatars/' . Auth::user()->avatar_path) }}">
                     </a>
                     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                         <a class="dropdown-item" href="{{ route('profile') }}">
@@ -36,9 +36,9 @@
                             Profile
                         </a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="{{ route('logout') }} data-toggle=" modal" data-target="#logoutModal"
+                        <a class="dropdown-item" href="{{ route('logout') }}" data-toggle="modal" data-target="#logoutModal"
                             onclick="event.preventDefault();
-                                                    document.getElementById('logout-form').submit();">
+                            document.getElementById('logout-form').submit();">
                             <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                             {{ __('Logout') }}
                         </a>
