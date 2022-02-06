@@ -57,4 +57,32 @@ $(function () {
         });
     });
 
+    $('#uploadImage').on('submit', function (e) {
+        e.preventDefault();
+        $.ajax({
+            url: $(this).attr('action'),
+            method: $(this).attr('method'),
+            data: new FormData(this),
+            processData: false,
+            dataType: 'json',
+            contentType: false,
+            beforeSend: function () {
+                $(document).find('span.error-text').text('');
+            },
+            success: function (data) {
+                if (data.status == 0) {
+                    $.each(data.error, function (prefix, val) {
+                        $('span.error-text'+'.'+prefix).text(val[0]);
+                    });
+                } else {
+                    $('.avatar').each(function () {
+                        $(this).attr("src","http://127.0.0.1:8000/storage/avatars/" + data.avatar)
+                    });
+                    $('#uploadImage')[0].reset();
+                    $('#staticBackdrop').modal('hide')
+                    alert(data.msg);
+                }
+            }
+        });
+    });
 });

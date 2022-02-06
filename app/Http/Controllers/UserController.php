@@ -14,11 +14,11 @@ class UserController extends Controller
         return view('user.profile');
     }
 
-    public function editInfo(){
-        return view('user.editInfo');
+    public function edit(){
+        return view('user.edit');
     }
 
-    public function updateInfo(Request $request){
+    public function update(Request $request){
 
         $validator = Validator::make($request->all(),[
             'first_name'=>'required',
@@ -91,7 +91,7 @@ class UserController extends Controller
         $new_name = $file->getClientOriginalName();
 
         if( !$validator->passes() ){
-            return Redirect::back()->withErrors($validator);
+            return response()->json(['status'=>0,'error'=>$validator->errors()->toArray()]);
         }else{
 
         $upload = $file->move(storage_path($path), $new_name);
@@ -99,21 +99,13 @@ class UserController extends Controller
         if( !$upload ){
             return response()->json(['status'=>0,'msg'=>'Something went wrong, upload new picture failed.']);
             }else{
-
-                $oldPicture = User::find(Auth::user()->id)->getAttributes()['avatar_path'];
-
-                if( $oldPicture != '' ){
-                    if( \File::exists(storage_path($path.$oldPicture))){
-                        \File::delete(storage_path($path.$oldPicture));
-                    }
-                }
                 
                 $update = User::find(Auth::user()->id)->update(['avatar_path'=>$new_name]);
 
                 if( !$upload ){
-                    return redirect()->route('profile');
+                    return response()->json(['status'=>0,'msg'=>'Something went wrong, updating picture in db failed.']);
                 }else{
-                    return redirect()->route('editInfo');
+                    return response()->json(['status'=>1,'msg'=>'Your profile picture has been updated successfully','avatar'=>$new_name]);
                 }
             }
         }

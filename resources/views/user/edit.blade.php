@@ -6,7 +6,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-3 text-center">
-                    <img src="{{ url('storage/avatars/' . Auth::user()->avatar_path) }}" class="w-100 py-2 rounded-circle" alt="...">
+                    <img src="{{ url('storage/avatars/' . Auth::user()->avatar_path) }}" class="w-100 py-2 rounded-circle avatar" alt="...">
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
                         Upload Image
                     </button>
@@ -21,7 +21,7 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <form method="POST" enctype="multipart/form-data" id="upload-image"
+                                    <form method="POST" enctype="multipart/form-data" id="uploadImage"
                                         action="{{ route('uploadAvatar') }}">
                                         {{ csrf_field() }}
                                         {{ method_field('put') }}
@@ -30,9 +30,8 @@
                                                 <div class="form-group">
                                                     <input type="file" name="avatar" placeholder="Choose image"
                                                         id="avatar">
-                                                    @error('avatar')
-                                                    <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
-                                                    @enderror
+                                                        <br/>
+                                                    <span class="text-danger error-text avatar"></span>
                                                 </div>
                                             </div>
                                         </div>
