@@ -43,13 +43,11 @@
             <div class="card mb-3">
                 <div class="row no-gutters">
                     <div class="col-auto  p-3">
-                        <img class="rounded-circle img-fluid" width="60" src="img/1240254.jpg" alt="">
+                        <img class="rounded-circle img-fluid" width="60" src="{{ url('storage/avatars/' . Auth::user()->avatar_path) }}" alt="">
                     </div>
                     <div class="col">
                         <div class="card-body">
-                            <p class="card-text">This is a wider card with supporting text below as
-                                a natural lead-in to additional content. This content is a little
-                                bit longer.</p>
+                            <p class="card-text">Post</p>
                         </div>
                     </div>
                 </div>
