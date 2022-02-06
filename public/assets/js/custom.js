@@ -76,7 +76,7 @@ $(function () {
                     });
                 } else {
                     $('.avatar').each(function () {
-                        $(this).attr("src","http://127.0.0.1:8000/storage/avatars/" + data.avatar)
+                        $(this).attr("src", data.url + "/storage/avatars/" + data.avatar)
                     });
                     $('#uploadImage')[0].reset();
                     $('#staticBackdrop').modal('hide')
