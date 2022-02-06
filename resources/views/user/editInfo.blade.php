@@ -63,7 +63,7 @@
                                 aria-labelledby="profile-tab">
                                 <div class="active tab-pane" id="personal_info">
                                     <form class="form-horizontal pt-3" method="POST" action="{{ route('updateInfo') }}"
-                                        id="UserInfoForm">
+                                        id="userInfoForm">
                                         {{ csrf_field() }}
                                         {{ method_field('put') }}
                                         <div class="form-group row">
@@ -72,9 +72,7 @@
                                                 <input type="text" class="form-control" id="inputFirstName"
                                                     placeholder="First Name" value="{{ Auth::user()->first_name }}"
                                                     name="first_name">
-                                                @error('first_name')
-                                                <span class="text-danger error-text name_error">{{ $message }}</span>
-                                                @enderror
+                                                <span class="text-danger error-text first_name"></span>
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -83,9 +81,7 @@
                                                 <input type="text" class="form-control" id="inputLastName"
                                                     placeholder="Last Name" value="{{ Auth::user()->last_name }}"
                                                     name="last_name">
-                                                @error('last_name')
-                                                <span class="text-danger error-text name_error">{{ $message }}</span>
-                                                @enderror
+                                                <span class="text-danger error-text last_name"></span>
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -93,9 +89,7 @@
                                             <div class="col-sm-10">
                                                 <input type="email" class="form-control" id="inputEmail"
                                                     placeholder="Email" value="{{ Auth::user()->email }}" name="email">
-                                                @error('last_name')
-                                                <span class="text-danger error-text name_error">{{ $message }}</span>
-                                                @enderror
+                                                <span class="text-danger error-text email"></span>
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -110,7 +104,7 @@
                                 aria-labelledby="password-tab">
                                 <div class="active tab-pane" id="personal_password">
                                     <form class="form-horizontal  pt-3" method="POST"
-                                        action="{{ route('changePassword') }}" id="UserPasswordForm">
+                                        action="{{ route('changePassword') }}" id="userPasswordForm">
                                         {{ csrf_field() }}
                                         {{ method_field('put') }}
                                         <div class="form-group row">
@@ -118,9 +112,7 @@
                                             <div class="col-sm-10">
                                                 <input type="password" class="form-control" id="currentPassword"
                                                     placeholder="Current" name="currentPassword">
-                                                @error('currentPassword')
-                                                <span class="text-danger error-text name_error">{{ $message }}</span>
-                                                @enderror
+                                                <span class="text-danger error-text currentPassword"></span>
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -128,9 +120,7 @@
                                             <div class="col-sm-10">
                                                 <input type="password" class="form-control" id="newPassword"
                                                     placeholder="New" name="newPassword">
-                                                @error('newPassword')
-                                                <span class="text-danger error-text name_error">{{ $message }}</span>
-                                                @enderror
+                                                <span class="text-danger error-text newPassword"></span>
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -138,9 +128,7 @@
                                             <div class="col-sm-10">
                                                 <input type="password" class="form-control" id="reTypePassword"
                                                     placeholder="Re-type" name="reTypePassword">
-                                                @error('reTypePassword')
-                                                <span class="text-danger error-text name_error">{{ $message }}</span>
-                                                @enderror
+                                                <span class="text-danger error-text reTypePassword"></span>
                                             </div>
                                         </div>
                                         <div class="form-group row">

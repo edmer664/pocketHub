@@ -27,15 +27,18 @@ class UserController extends Controller
         ]);
 
         if(!$validator->passes()){
-            return redirect()->route('profile');
+            return response()->json(['status'=>0,'error'=>$validator->errors()->toArray()]);
         }else{
             $query = User::find(Auth::user()->id)->update([
                 'first_name'=>$request->first_name,
                 'last_name'=>$request->last_name,
                 'email'=>$request->email,
             ]);
-            return redirect()->route('editInfo');
-
+            if(!$query){
+                return response()->json(['status'=>0,'msg'=>'Something went wrong.']);
+            }else{
+                return response()->json(['status'=>1,'msg'=>'Your profile info has been update successfuly.']);
+            }
         }
     }
 
@@ -64,15 +67,15 @@ class UserController extends Controller
             ]);
 
             if( !$validator->passes() ){
-                return Redirect::back()->withErrors($validator);
+                return response()->json(['status'=>0,'error'=>$validator->errors()->toArray()]);
             }else{
 
             $update = User::find(Auth::user()->id)->update(['password'=>\Hash::make($request->newPassword)]);
 
             if( !$update ){
-                return redirect()->route('profile');
+                return response()->json(['status'=>0,'msg'=>'Something went wrong, Failed to update password in db']);
             }else{
-                return redirect()->route('editInfo');
+                return response()->json(['status'=>1,'msg'=>'Your password has been changed successfully']);
             }
         }
     }
