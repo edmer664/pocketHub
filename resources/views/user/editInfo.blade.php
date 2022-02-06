@@ -6,7 +6,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-3 text-center">
-                    <img src="assets/img/undraw_profile.svg" class="w-100 py-2 rounded-circle" alt="...">
+                    <img src="{{asset('assets/img/undraw_profile.svg')}}" class="w-100 py-2 rounded-circle" alt="...">
                     <button class="btn btn-primary ">Change Image</button>
                 </div>
                 <div class="card-body">
