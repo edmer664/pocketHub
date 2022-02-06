@@ -38,7 +38,8 @@ class UserController extends Controller
 
         }
     }
-    function changePassword(Request $request){
+
+    public function changePassword(Request $request){
             $validator = \Validator::make($request->all(),[
                 'currentPassword'=>[
                     'required', function($attribute, $value, $fail){
@@ -72,6 +73,45 @@ class UserController extends Controller
                 return redirect()->route('profile');
             }else{
                 return redirect()->route('editInfo');
+            }
+        }
+    }
+
+    public function uploadAvatar(Request $request){
+        
+        $validator =  \Validator::make($request->all(),[
+            'avatar' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+        ]);
+
+        $path = 'app/public/avatars/';
+        $file = $request->file('avatar');
+        $new_name = $file->getClientOriginalName();
+
+        if( !$validator->passes() ){
+            return Redirect::back()->withErrors($validator);
+        }else{
+
+        $upload = $file->move(storage_path($path), $new_name);
+        
+        if( !$upload ){
+            return response()->json(['status'=>0,'msg'=>'Something went wrong, upload new picture failed.']);
+            }else{
+
+                $oldPicture = User::find(Auth::user()->id)->getAttributes()['avatar_path'];
+
+                if( $oldPicture != '' ){
+                    if( \File::exists(storage_path($path.$oldPicture))){
+                        \File::delete(storage_path($path.$oldPicture));
+                    }
+                }
+                
+                $update = User::find(Auth::user()->id)->update(['avatar_path'=>$new_name]);
+
+                if( !$upload ){
+                    return redirect()->route('profile');
+                }else{
+                    return redirect()->route('editInfo');
+                }
             }
         }
     }

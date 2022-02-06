@@ -4,7 +4,7 @@
 <div class="card mb-3 w-100">
     <div class="row no-gutters">
         <div class="col-md-2">
-            <img src="{{asset('assets/img/undraw_profile.svg')}}" class="w-100 m-3 " alt="...">
+            <img src="{{ url('storage/avatars/' . Auth::user()->avatar_path) }}" class="rounded-circle img-fluid w-100 m-3 " alt="...">
         </div>
         <div class="col-md-9 ml-3 mt-3">
             <div class="card-body">
@@ -23,7 +23,7 @@
             <div class="card-body w-100">
                 <div class="row no-gutters align-items-center">
                     <div class="col-auto mr-2">
-                        <img class="rounded-circle img-fluid" width="60" src="{{asset('assets/img/undraw_profile.svg')}}" alt="">
+                        <img class="rounded-circle img-fluid" width="60" src="{{ url('storage/avatars/' . Auth::user()->avatar_path) }}" alt="">
                     </div>
                     <div class="col ">
                         <form action="">

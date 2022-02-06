@@ -24,4 +24,5 @@ Route::group(['middleware'=>['auth','PreventBackHistory']], function(){
     Route::get('/profile/edit', [UserController::class, 'editInfo'])->name('editInfo');
     Route::put('update-profile-info', [UserController::class, 'updateInfo'])->name('updateInfo');
     Route::put('change-password', [UserController::class, 'changePassword'])->name('changePassword');
+    Route::put('upload-avatar', [UserController::class, 'uploadAvatar'])->name('uploadAvatar');
 });
