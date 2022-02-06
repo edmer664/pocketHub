@@ -105,7 +105,7 @@ class UserController extends Controller
                 if( !$upload ){
                     return response()->json(['status'=>0,'msg'=>'Something went wrong, updating picture in db failed.']);
                 }else{
-                    return response()->json(['status'=>1,'msg'=>'Your profile picture has been updated successfully','avatar'=>$new_name]);
+                    return response()->json(['status'=>1,'msg'=>'Your profile picture has been updated successfully','avatar'=>$new_name,'url'=>url('/')]);
                 }
             }
         }
