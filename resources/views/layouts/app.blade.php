@@ -20,9 +20,9 @@
 <body id="page-top">
     <div id="wrapper">
         @include('layouts.sidebar')
-        <div id="content-wrapper" class="d-flex flex-column">
+        <div class="d-flex flex-column">
             <div id="content">
-                @include('layouts.navbar')
+            @include('layouts.navbar')
                 <main class="container-fluid">
                     @yield('content')
                 </main>
