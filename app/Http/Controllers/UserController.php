@@ -5,13 +5,18 @@ use Redirect;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use App\Models\Post;
 
 use App\Models\User;
 
 class UserController extends Controller
 {
     public function profile(){
-        return view('user.profile');
+        //retrieve all user posts from database
+        $user_id = Auth::user()->id;
+        $posts = Post::where('author_id',$user_id)->orderBy('created_at', 'desc')->get();
+
+        return view('user.profile',compact('posts'));
     }
 
     public function edit(){

@@ -37,13 +37,13 @@
             <div class="card mb-3">
                 <div class="row no-gutters">
                     <div class="col-auto  p-3">
-                        @if (Auth::user()->avatar_path == null)
+                        @if ($post->author_avatar == null)
                         <img class="rounded-circle img-fluid" width="60"
                             src="https://avatars.dicebear.com/api/initials/{{substr(Auth::user()->first_name, 0, 1) . substr(Auth::user()->last_name, 0, 1)}}.svg?backgroundColorLevel=300&fontSize=35"
                             alt="">
                         @else
                         <img class="rounded-circle img-fluid" width="60"
-                            src="{{ url('storage/avatars/' . Auth::user()->avatar_path) }}" alt="">
+                            src="{{ url('storage/avatars/' . $post->author_avatar) }}" alt="">
                         @endif
 
                     </div>
@@ -53,6 +53,22 @@
                                 {{ $post->content }}
                             </p>
                         </div>
+                    </div>
+                </div>
+                <div class="row align-items-center">
+                    <div class="col align-items-center">
+                        {{-- comment icon --}}
+                        <a href="{{ route('showPost', ['id' => $post->id]) }}" class="btn btn-primary btn-sm">
+                            <i class="fas fa-comment"></i>
+                        </a>
+                        
+                    </div>
+                    <div class="col text-right">      
+                            <p class="card-text">
+                                <small class="text-muted">
+                                    {{ $post->created_at }}
+                                </small>
+                            </p>
                     </div>
                 </div>
             </div>
