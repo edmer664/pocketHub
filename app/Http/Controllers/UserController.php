@@ -14,7 +14,7 @@ class UserController extends Controller
     public function profile(){
         //retrieve all user posts from database
         $user_id = Auth::user()->id;
-        $posts = Post::find($user_id)->orderBy('created_at', 'desc')->get();
+        $posts = Post::where('author_id',$user_id)->orderBy('created_at', 'desc')->get();
 
         return view('user.profile',compact('posts'));
     }
