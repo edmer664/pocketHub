@@ -66,7 +66,7 @@
                     <div class="col text-right mx-2">      
                             <p class="card-text">
                                 <small class="text-muted">
-                                    {{ $post->created_at }}
+                                    {{ $post->created_at->diffForHumans() }}
                                 </small>
                             </p>
                     </div>
