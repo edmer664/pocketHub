@@ -16,4 +16,13 @@ class PostController extends Controller
 
         return redirect()->back();
     }
+
+    //edit user post
+    public function edit(Request $request, $id){
+        $post = Post::find($id);
+        $post->content = $request->content;
+        $post->save();
+
+        return redirect()->back();
+    }
 }
