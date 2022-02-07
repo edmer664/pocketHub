@@ -6,7 +6,16 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-3 text-center">
-                    <img src="{{ url('storage/avatars/' . Auth::user()->avatar_path) }}" class="w-100 py-2 rounded-circle avatar" alt="...">
+                    @if (Auth::user()->avatar_path == null)
+                    <img class="w-100 py-2 rounded-circle default-avatar" width="60"
+                        src="https://avatars.dicebear.com/api/initials/{{substr(Auth::user()->first_name, 0, 1) . substr(Auth::user()->last_name, 0, 1)}}.svg?backgroundColorLevel=300&fontSize=35"
+                        alt="">
+                    @else
+                    <img class="w-100 py-2 rounded-circle avatar" width="60"
+                        src="{{ url('storage/avatars/' . Auth::user()->avatar_path) }}" alt="">
+                    @endif
+                    <img class="w-100 py-2 rounded-circle avatar d-none" width="60"
+                        src="{{ url('storage/avatars/' . Auth::user()->avatar_path) }}" alt="">
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
                         Upload Image
                     </button>
@@ -30,7 +39,7 @@
                                                 <div class="form-group">
                                                     <input type="file" name="avatar" placeholder="Choose image"
                                                         id="avatar">
-                                                        <br/>
+                                                    <br />
                                                     <span class="text-danger error-text avatar"></span>
                                                 </div>
                                             </div>
