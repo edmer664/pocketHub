@@ -75,8 +75,12 @@ $(function () {
                         $('span.error-text'+'.'+prefix).text(val[0]);
                     });
                 } else {
+                    $('.default-avatar').each(function () {
+                        $(this).addClass("d-none");
+                    });
                     $('.avatar').each(function () {
-                        $(this).attr("src", data.url + "/storage/avatars/" + data.avatar)
+                        $(this).attr("src", data.url + "/storage/avatars/" + data.avatar);
+                        $(this).removeClass("d-none");
                     });
                     $('#uploadImage')[0].reset();
                     $('#staticBackdrop').modal('hide')
