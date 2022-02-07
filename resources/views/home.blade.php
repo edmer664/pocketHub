@@ -39,7 +39,7 @@
                     <div class="col-auto  p-3">
                         @if ($post->author_avatar == null)
                         <img class="rounded-circle img-fluid" width="60"
-                            src="https://avatars.dicebear.com/api/initials/{{substr(Auth::user()->first_name, 0, 1) . substr(Auth::user()->last_name, 0, 1)}}.svg?backgroundColorLevel=300&fontSize=35"
+                            src="https://avatars.dicebear.com/api/initials/{{substr($post->first_name, 0, 1) . substr($post->last_name, 0, 1)}}.svg?backgroundColorLevel=300&fontSize=35"
                             alt="">
                         @else
                         <img class="rounded-circle img-fluid" width="60"
