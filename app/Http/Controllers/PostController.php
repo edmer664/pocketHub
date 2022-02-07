@@ -25,4 +25,12 @@ class PostController extends Controller
 
         return redirect()->back();
     }
+
+    //delete user post
+    public function delete(Request $request, $id){
+        $post = Post::find($id);
+        $post->delete();
+
+        return redirect()->back();
+    }
 }

@@ -28,4 +28,5 @@ Route::group(['middleware'=>['auth','PreventBackHistory']], function(){
     Route::put('upload-avatar', [UserController::class, 'uploadAvatar'])->name('uploadAvatar');
     Route::post('creat-poste', [PostController::class, 'create'])->name('createPost');
     Route::put('edit-post/{id}', [PostController::class, 'edit'])->name('editPost');
+    Route::delete('delete-post/{id}', [PostController::class, 'delete'])->name('deletePost');
 });
