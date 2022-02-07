@@ -29,4 +29,6 @@ Route::group(['middleware'=>['auth','PreventBackHistory']], function(){
     Route::post('creat-poste', [PostController::class, 'create'])->name('createPost');
     Route::put('edit-post/{id}', [PostController::class, 'edit'])->name('editPost');
     Route::delete('delete-post/{id}', [PostController::class, 'delete'])->name('deletePost');
+    // show post
+    Route::get('/post/{id}', [PostController::class, 'show'])->name('showPost');
 });
