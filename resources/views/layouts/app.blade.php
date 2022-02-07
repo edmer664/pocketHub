@@ -29,9 +29,9 @@
             </div>
         </div>
     </div>
-
-    <script src="{{asset('assets/vendors/jquery/jquery.min.js')}}"></>
-    <script src="{{asset('assets/vendors/bootstrap/js/bootstrap.bundle.min.js')}}"></scrip>
+    
+    <script src="{{asset('assets/vendors/jquery/jquery.min.js')}}"></script>
+    <script src="{{asset('assets/vendors/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{asset('assets/vendors/jquery-easing/jquery.easing.min.js')}}"></script>
     <script src="{{asset('assets/js/sb-admin-2.min.js')}}"></script>
     <script src="{{asset('assets/js/custom.min.js')}}"></script>
