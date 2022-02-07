@@ -74,7 +74,20 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col">
+                        {{-- delete button --}}
+                        <form action="{{ route('deletePost', $post->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                        </form>
+                        {{-- edit button --}}
+                        
+                    </div>
+                </div>
             </div>
+
         </div>
         @endforeach
     </div>
