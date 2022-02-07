@@ -88,26 +88,33 @@ class UserController extends Controller
 
         $path = 'app/public/avatars/';
         $file = $request->file('avatar');
-        $new_name = $file->getClientOriginalName();
+        $new_name = time() .'_'. Auth::user()->id .'.'. $file->extension();
 
         if( !$validator->passes() ){
             return response()->json(['status'=>0,'error'=>$validator->errors()->toArray()]);
         }else{
 
-        $upload = $file->move(storage_path($path), $new_name);
-        
-        if( !$upload ){
-            return response()->json(['status'=>0,'msg'=>'Something went wrong, upload new picture failed.']);
-            }else{
-                
-                $update = User::find(Auth::user()->id)->update(['avatar_path'=>$new_name]);
-
-                if( !$upload ){
-                    return response()->json(['status'=>0,'msg'=>'Something went wrong, updating picture in db failed.']);
-                }else{
-                    return response()->json(['status'=>1,'msg'=>'Your profile picture has been updated successfully','avatar'=>$new_name,'url'=>url('/')]);
+            $oldPicture = User::find(Auth::user()->id)->getAttributes()['avatar_path'];
+            if( $oldPicture != '' ){
+                if( \File::exists(storage_path($path.$oldPicture))){
+                    \File::delete(storage_path($path.$oldPicture));
                 }
             }
+
+            $upload = $file->move(storage_path($path), $new_name);
+        
+            if( !$upload ){
+                return response()->json(['status'=>0,'msg'=>'Something went wrong, upload new picture failed.']);
+                }else{
+
+                    $update = User::find(Auth::user()->id)->update(['avatar_path'=>$new_name]);
+                    
+                    if( !$upload ){
+                        return response()->json(['status'=>0,'msg'=>'Something went wrong, updating picture in db failed.']);
+                    }else{
+                        return response()->json(['status'=>1,'msg'=>'Your profile picture has been updated successfully','avatar'=>$new_name,'url'=>url('/'), 'old'=>$oldPicture]);
+                    }
+                }
         }
     }
 }

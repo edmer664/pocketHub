@@ -7,7 +7,15 @@
             <div class="card-body w-100">
                 <div class="row no-gutters align-items-center">
                     <div class="col-auto mr-2">
-                        <img class="rounded-circle img-fluid" width="60" src="{{ url('storage/avatars/' . Auth::user()->avatar_path) }}" alt="">
+                        @if (Auth::user()->avatar_path == null)
+                        <img class="rounded-circle img-fluid" width="60"
+                            src="https://avatars.dicebear.com/api/initials/{{substr(Auth::user()->first_name, 0, 1) . substr(Auth::user()->last_name, 0, 1)}}.svg?backgroundColorLevel=300&fontSize=35"
+                            alt="">
+                        @else
+                        <img class="rounded-circle img-fluid" width="60"
+                            src="{{ url('storage/avatars/' . Auth::user()->avatar_path) }}" alt="">
+                        @endif
+
                     </div>
                     <div class="col ">
                         <form action="{{ route('createPost') }}" method="POST">
@@ -29,7 +37,15 @@
             <div class="card mb-3">
                 <div class="row no-gutters">
                     <div class="col-auto  p-3">
-                        <img class="rounded-circle img-fluid" width="60" src="{{ url('storage/avatars/' . Auth::user()->avatar_path) }}" alt="">
+                        @if (Auth::user()->avatar_path == null)
+                        <img class="rounded-circle img-fluid" width="60"
+                            src="https://avatars.dicebear.com/api/initials/{{substr(Auth::user()->first_name, 0, 1) . substr(Auth::user()->last_name, 0, 1)}}.svg?backgroundColorLevel=300&fontSize=35"
+                            alt="">
+                        @else
+                        <img class="rounded-circle img-fluid" width="60"
+                            src="{{ url('storage/avatars/' . Auth::user()->avatar_path) }}" alt="">
+                        @endif
+
                     </div>
                     <div class="col">
                         <div class="card-body">
