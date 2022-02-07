@@ -55,6 +55,22 @@
                         </div>
                     </div>
                 </div>
+                <div class="row align-items-center">
+                    <div class="col align-items-center">
+                        {{-- comment icon --}}
+                        <a href="{{ route('showPost', ['id' => $post->id]) }}" class="btn btn-primary btn-sm">
+                            <i class="fas fa-comment"></i>
+                        </a>
+                        
+                    </div>
+                    <div class="col text-right">      
+                            <p class="card-text">
+                                <small class="text-muted">
+                                    {{ $post->created_at }}
+                                </small>
+                            </p>
+                    </div>
+                </div>
             </div>
         </div>
         @endforeach
