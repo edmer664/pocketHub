@@ -33,46 +33,50 @@
     </div>
     <div class="w-100 mt-3">
         @foreach ($posts as $post)
-        <div class="card shadow mb-4">
-            <div class="card mb-3">
-                <div class="row no-gutters">
-                    <div class="col-auto  p-3">
-                        @if ($post->author_avatar == null)
-                        <img class="rounded-circle img-fluid" width="60"
-                            src="https://avatars.dicebear.com/api/initials/{{substr($post->first_name, 0, 1) . substr($post->last_name, 0, 1)}}.svg?backgroundColorLevel=300&fontSize=35"
-                            alt="">
-                        @else
-                        <img class="rounded-circle img-fluid" width="60"
-                            src="{{ url('storage/avatars/' . $post->author_avatar) }}" alt="">
-                        @endif
+            <div class="card shadow mb-4">
+                <div class="card mb-3">
+                    <div class="row no-gutters">
+                        <div class="col-auto  p-3">
+                            @if ($post->author_avatar == null)
+                            <img class="rounded-circle img-fluid" width="60"
+                                src="https://avatars.dicebear.com/api/initials/{{substr($post->first_name, 0, 1) . substr($post->last_name, 0, 1)}}.svg?backgroundColorLevel=300&fontSize=35"
+                                alt="">
+                            @else
+                            <img class="rounded-circle img-fluid" width="60"
+                                src="{{ url('storage/avatars/' . $post->author_avatar) }}" alt="">
+                            @endif
 
+                        </div>
+                        <div class="col">
+                            <div class="card-body">
+                                <p class="card-text">
+                                    {{ substr($post->content,0,400) }}
+                                    {{-- if content is more than 200 characters long display a readmore link--}}
+                                    @if (strlen($post->content) > 400)
+                                        <a href="{{ route('showPost', ['id' => $post->id]) }}">Read More</a>
+                                    @endif
+                                </p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col">
-                        <div class="card-body">
-                            <p class="card-text">
-                                {{ $post->content }}
-                            </p>
+                    <div class="row align-items-center ">
+                        <div class="col align-items-center m-2">
+                            {{-- expand icon --}}
+                            <a href="{{ route('showPost', ['id' => $post->id]) }}" class="btn btn-primary btn-sm">
+                                <i class="fas fa-expand"></i>
+                            </a>
+                            
+                        </div>
+                        <div class="col text-right mx-2">      
+                                <p class="card-text">
+                                    <small class="text-muted">
+                                        {{ $post->created_at->diffForHumans() }}
+                                    </small>
+                                </p>
                         </div>
                     </div>
                 </div>
-                <div class="row align-items-center ">
-                    <div class="col align-items-center m-2">
-                        {{-- expand icon --}}
-                        <a href="{{ route('showPost', ['id' => $post->id]) }}" class="btn btn-primary btn-sm">
-                            <i class="fas fa-expand"></i>
-                        </a>
-                        
-                    </div>
-                    <div class="col text-right mx-2">      
-                            <p class="card-text">
-                                <small class="text-muted">
-                                    {{ $post->created_at->diffForHumans() }}
-                                </small>
-                            </p>
-                    </div>
-                </div>
             </div>
-        </div>
         @endforeach
     </div>
 </div>
