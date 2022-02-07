@@ -41,9 +41,10 @@
                             @endif
                     </div>
                     <div class="col ">
-                        <form action="">
+                        <form action="{{ route('createPost') }}" method="POST">
+                            {{ csrf_field() }}
                             <div class="input-group">
-                                <textarea class="form-control custom-control" placeholder="What's in your Mind?"
+                                <textarea name="content" class="form-control custom-control" placeholder="What's in your Mind?"
                                     rows="3" style="resize:none"></textarea>
                                 <button class="input-group-addon btn btn-primary">Send</button>
                             </div>
@@ -74,7 +75,25 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col">
+                        {{-- delete button --}}
+                        <form action="{{ route('deletePost', $post->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                        </form>
+                        {{-- expand button --}}
+                        <a href="{{ route('showPost', ['id' => $post->id]) }}" class="btn btn-primary btn-sm">
+                            <i class="fas fa-expand"></i>
+                        </a>
+                        {{-- edit button --}}
+                        {{-- created at --}}
+                        <p class="card-text"><small class="text-muted">{{$post->created_at->diffForHumans()}}</small></p>
+                    </div>
+                </div>
             </div>
+
         </div>
         @endforeach
     </div>
