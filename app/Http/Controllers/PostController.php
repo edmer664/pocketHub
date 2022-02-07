@@ -41,22 +41,40 @@ class PostController extends Controller
         $post = Post::find($id);
         $author = $post->author_id;
         $user = User::find($author);
-        $avatar_path = $user->avatar_path;
-        $post->author_avatar = $avatar_path;
         // retrieve post comments from comments table
-        $comments = Comment::where('post_id', $id)->get();
-        return view('post', compact('post', 'comments'));
+        $comments = Comment::where('post_id', $id)->orderBy('created_at', 'desc')->get();
+        // add user to comments
+        foreach($comments as $comment){
+            $comment->user = User::find($comment->user_id);
+        }
+        return view('post', compact('post', 'comments','user'));
     }
 
     // add comment to post
     public function addComment(Request $request, $id){
         $comment = new Comment();
         $comment->post_id = $id;
-        $comment->author_id = $request->user()->id;
+        $comment->user_id = $request->user()->id;
         $comment->content = $request->content;
         $comment->save();
 
         return redirect()->back();
     }
 
+    // edit comment
+    public function editComment(Request $request, $id){
+        $comment = Comment::find($id);
+        $comment->content = $request->content;
+        $comment->save();
+
+        return redirect()->back();
+    }
+
+    // delete comment
+    public function deleteComment(Request $request, $id){
+        $comment = Comment::find($id);
+        $comment->delete();
+
+        return redirect()->back();
+    }
 }
