@@ -54,6 +54,7 @@
         </div>
     </div>
     <div class="w-100 mt-3">
+        @foreach ($posts as $post)
         <div class="card shadow mb-4">
             <div class="card mb-3">
                 <div class="row no-gutters">
@@ -69,12 +70,13 @@
                     </div>
                     <div class="col">
                         <div class="card-body">
-                            <p class="card-text">Post</p>
+                            <p class="card-text">{{$post->content}}</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        @endforeach
     </div>
 </div>
 @endsection
