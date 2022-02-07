@@ -20,7 +20,7 @@
 <body id="page-top">
     <div id="wrapper">
         @include('layouts.sidebar')
-        <div class="d-flex flex-column">
+        <div class="d-flex flex-column w-100">
             <div id="content">
             @include('layouts.navbar')
                 <main class="container-fluid">
