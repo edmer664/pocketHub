@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PostController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,4 +26,5 @@ Route::group(['middleware'=>['auth','PreventBackHistory']], function(){
     Route::put('update-profile-info', [UserController::class, 'update'])->name('updateInfo');
     Route::put('change-password', [UserController::class, 'changePassword'])->name('changePassword');
     Route::put('upload-avatar', [UserController::class, 'uploadAvatar'])->name('uploadAvatar');
+    Route::post('creat-poste', [PostController::class, 'create'])->name('createPost');
 });

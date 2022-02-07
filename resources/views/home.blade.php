@@ -10,11 +10,12 @@
                         <img class="rounded-circle img-fluid" width="60" src="{{ url('storage/avatars/' . Auth::user()->avatar_path) }}" alt="">
                     </div>
                     <div class="col ">
-                        <form action="">
+                        <form action="{{ route('createPost') }}" method="POST">
+                            {{ csrf_field() }}
                             <div class="input-group">
                                 <textarea class="form-control custom-control" placeholder="What's in your Mind?"
-                                    rows="3" style="resize:none"></textarea>
-                                <button class="input-group-addon btn btn-primary">Send</button>
+                                   name='content' rows="3" style="resize:none"></textarea>
+                                <button type="submit" class="input-group-addon btn btn-primary">Send</button>
                             </div>
                         </form>
                     </div>
