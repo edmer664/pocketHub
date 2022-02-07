@@ -97,6 +97,14 @@
                             </div>
                             <div class="card-footer">
                                 <div class="col-auto p-3">
+                                    {{-- delete button if user is owner of the comment --}}
+                                    @if (Auth::user()->id == $comment->user_id)
+                                    <form action="{{ route('deleteComment', $comment->id) }}" method="POST">
+                                        {{ csrf_field() }}
+                                        {{ method_field('DELETE') }}
+                                        <button class="btn btn-danger">Delete</button>
+                                    </form>
+                                    @endif
                                     <small>
                                         {{ $comment->created_at->diffForHumans() }}
                                     </small>
