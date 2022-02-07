@@ -55,15 +55,15 @@
                         </div>
                     </div>
                 </div>
-                <div class="row align-items-center">
-                    <div class="col align-items-center">
-                        {{-- comment icon --}}
+                <div class="row align-items-center ">
+                    <div class="col align-items-center m-2">
+                        {{-- expand icon --}}
                         <a href="{{ route('showPost', ['id' => $post->id]) }}" class="btn btn-primary btn-sm">
-                            <i class="fas fa-comment"></i>
+                            <i class="fas fa-expand"></i>
                         </a>
                         
                     </div>
-                    <div class="col text-right">      
+                    <div class="col text-right mx-2">      
                             <p class="card-text">
                                 <small class="text-muted">
                                     {{ $post->created_at }}
