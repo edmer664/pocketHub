@@ -33,5 +33,6 @@ Route::group(['middleware'=>['auth','PreventBackHistory']], function(){
     Route::get('/post/{id}', [PostController::class, 'show'])->name('showPost');
     // add comment to post
     Route::post('/post/{id}/comment', [PostController::class, 'addComment'])->name('addComment');
-    // TODO: routes for edit and delete comment 
+    // TODO: routes for edit and delete comment
+    Route::delete('/comment/delete/{id}', [PostController::class, 'deleteComment'])->name('deleteComment'); 
 });
