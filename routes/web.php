@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PostController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,6 +22,11 @@ Route::group(['middleware'=>['auth','PreventBackHistory']], function(){
     Route::get('/', [HomeController::class, 'index'])->name('home');
 
     Route::get('/profile', [UserController::class, 'profile'])->name('profile');
-    Route::get('/edit', [UserController::class, 'edit'])->name('edit');
-    Route::put('/edit', [UserController::class, 'update']);
+    Route::get('/profile/edit', [UserController::class, 'edit'])->name('editInfo');
+    Route::put('update-profile-info', [UserController::class, 'update'])->name('updateInfo');
+    Route::put('change-password', [UserController::class, 'changePassword'])->name('changePassword');
+    Route::put('upload-avatar', [UserController::class, 'uploadAvatar'])->name('uploadAvatar');
+    Route::post('creat-poste', [PostController::class, 'create'])->name('createPost');
+    Route::put('edit-post/{id}', [PostController::class, 'edit'])->name('editPost');
+    Route::delete('delete-post/{id}', [PostController::class, 'delete'])->name('deletePost');
 });
