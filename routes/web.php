@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\MessageController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,4 +36,9 @@ Route::group(['middleware'=>['auth','PreventBackHistory']], function(){
     Route::post('/post/{id}/comment', [PostController::class, 'addComment'])->name('addComment');
     // TODO: routes for edit and delete comment
     Route::delete('/comment/delete/{id}', [PostController::class, 'deleteComment'])->name('deleteComment'); 
+
+    Route::get('/message', [MessageController::class, 'index'])->name('message');
+    Route::get('/latestMessage', [MessageController::class, 'latestMessage'])->name('latestMessage');
+    
+
 });
