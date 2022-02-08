@@ -39,6 +39,10 @@ class PostController extends Controller
     //show post
     public function show(Request $request, $id){
         $post = Post::find($id);
+        // if post is null redirect to home page
+        if(!$post){
+            return redirect()->route('home');
+        }
         $author = $post->author_id;
         $user = User::find($author);
         // retrieve post comments from comments table
