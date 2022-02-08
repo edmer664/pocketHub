@@ -23,6 +23,15 @@
                                 {{ $user->first_name . " " . $user->last_name }}
                             </h4>
                         </div>
+                        {{-- delete button if user is the owner of the post --}}
+                        @if (Auth::id() == $user->id)
+                        <form method="post" action="{{ route('deletePost',$post->id)}}">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                        </form>
+                        @endif
+
                     </div>
                     <div class="card-body text-justify">
                         {{ $post->content }}
