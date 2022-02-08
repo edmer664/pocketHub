@@ -25,7 +25,7 @@
                         </div>
                         {{-- delete button if user is the owner of the post --}}
                         @if (Auth::id() == $user->id)
-                        <form method="post" action="{{ route('deletePost',$post->id)}}">
+                        <form method="POST" action="{{ route('deletePost',$post->id)}}">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-sm btn-danger">Delete</button>
