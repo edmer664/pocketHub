@@ -8,6 +8,9 @@ use App\Models\Conversation;
 
 class MessageController extends Controller
 {
+    public function index(Request $request){
+        return view('messages.latestMessage');
+    }
     //send message
     public function send(Request $request){
         $message = new Message();
@@ -30,7 +33,7 @@ class MessageController extends Controller
         foreach($messages as $message){
             $message->user = User::find($message->sender_id);
         }
-        return view('messages', compact('messages'));
+        return view('messages.latestMessage', compact('latestMessage'));
     }
     
     // make a new conversation containing participants json

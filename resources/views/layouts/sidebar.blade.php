@@ -15,12 +15,12 @@
             <span>Home</span></a>
     </li>
 
-    <!-- TODO-->
-    <!-- <li class="nav-item">
-        <a class="nav-link" href="messages.html">
+   
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('message') }}">
             <i class="fas fa-fw fa-envelope"></i>
             <span>Messages</span></a>
-    </li> -->
+    </li>
     <hr class="sidebar-divider d-none d-md-block">
         <div class="text-center d-none d-md-block ">
             <button class="rounded-circle border-0" id="sidebarToggle"></button>
