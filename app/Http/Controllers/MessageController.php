@@ -33,7 +33,7 @@ class MessageController extends Controller
         foreach($messages as $message){
             $message->user = User::find($message->sender_id);
         }
-        return view('messages.latestMessage', compact('latestMessage'));
+        return view('messages.latestMessage', compact('messages'));
     }
     
     // make a new conversation containing participants json
