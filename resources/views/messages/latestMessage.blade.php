@@ -21,8 +21,14 @@
                 <div class=" border-bottom border-dark ">
                     <div class="d-flex">
                         <div class="pr-2">
-                            <img src="img/undraw_profile.svg"
-                                height="60px" width="60px" class="rounded-circle">
+                            @if (Auth::user()->avatar_path == null)
+                            <img class="rounded-circle img-fluid m-3" width="60" height="60"
+                                src="https://avatars.dicebear.com/api/initials/{{substr(Auth::user()->first_name, 0, 1) . substr(Auth::user()->last_name, 0, 1)}}.svg?backgroundColorLevel=300&fontSize=35"
+                                alt="">
+                            @else
+                            <img class="rounded-circle img-fluid" width="60" height="60"
+                                src="{{ url('storage/avatars/' . Auth::user()->avatar_path) }}" alt="">
+                            @endif
                         </div>
                         <div class="pb-2">
                             <span>Jane Doe</span>
