@@ -49,6 +49,7 @@
                         </div>
                         <div class="col">
                             <div class="card-body">
+                                <h5 class="card-title">{{ $post->first_name . " " . $post->last_name }}</h5>
                                 <p class="card-text">
                                     {{ substr($post->content,0,400) }}
                                     {{-- if content is more than 200 characters long display a readmore link--}}

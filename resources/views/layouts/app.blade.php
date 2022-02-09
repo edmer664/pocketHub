@@ -23,7 +23,10 @@
 
         <div class="d-flex flex-column w-100">
             <div id="content">
-            @include('layouts.navbar')
+                @auth
+                @include('layouts.navbar')
+                @endauth
+           
                 <main class="container-fluid">
                     @yield('content')
                 </main>
