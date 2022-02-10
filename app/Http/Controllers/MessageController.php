@@ -18,10 +18,10 @@ class MessageController extends Controller
         
     }
     //send message
-    public function send(Request $request){
+    public function send(Request $request,$id){
         $message = new Message();
         $message->sender_id = $request->user()->id;
-        $message->conversation_id = $request->conversation_id;
+        $message->conversation_id = $id;
         $message->body = $request->body;
         $message->save();
         return redirect()->back();
@@ -68,10 +68,18 @@ class MessageController extends Controller
     }
     // get messages in descending order
     public function getMessages(Request $request, $id){
-        $messages = Message::where('conversation_id', $id)->orderBy('created_at', 'desc')->get();
+        // get last 20 messages where conversation id is equal to the id
+
+        $messages = Message::where('conversation_id', $id)->orderBy('created_at')->take(20)->get();
         return response()->json($messages);
     }
 
+    // search conversations with first name as input
+    public function searchConversations(Request $request){
+        $conversations = Conversation::where('participants', $request->user()->id)
+            ->where('participants', $request->receiver_id)->get();
+        return response()->json($conversations);
+    }
     
 
 }
