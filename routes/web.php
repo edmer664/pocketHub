@@ -36,9 +36,15 @@ Route::group(['middleware'=>['auth','PreventBackHistory']], function(){
     Route::post('/post/{id}/comment', [PostController::class, 'addComment'])->name('addComment');
     // TODO: routes for edit and delete comment
     Route::delete('/comment/delete/{id}', [PostController::class, 'deleteComment'])->name('deleteComment'); 
+    // get user information
+    Route::get('api/user/{id}', [UserController::class, 'getUserInfo'])->name('getUserInfo');
 
+    // message route
     Route::get('/message', [MessageController::class, 'index'])->name('message');
-    Route::get('/latestMessage', [MessageController::class, 'latestMessage'])->name('latestMessage');
-    
+    // messages api
+    Route::get('api/conversations/{id}', [MessageController::class, 'getConversations'])->name('getConversations');
+
+    // get conversation Messages
+    Route::get('api/conversations/{id}/messages', [MessageController::class, 'getConversationMessages'])->name('getConversationMessages');
 
 });
