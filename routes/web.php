@@ -45,6 +45,6 @@ Route::group(['middleware'=>['auth','PreventBackHistory']], function(){
     Route::get('api/conversations/{id}', [MessageController::class, 'getConversations'])->name('getConversations');
 
     // get conversation Messages
-    Route::get('api/conversations/{id}/messages', [MessageController::class, 'getConversationMessages'])->name('getConversationMessages');
+    Route::get('api/conversations/{id}/messages', [MessageController::class, 'getMessages'])->name('getMessages');
 
 });
