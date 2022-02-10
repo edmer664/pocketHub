@@ -46,5 +46,8 @@ Route::group(['middleware'=>['auth','PreventBackHistory']], function(){
 
     // get conversation Messages
     Route::get('api/conversations/{id}/messages', [MessageController::class, 'getMessages'])->name('getMessages');
-
+    // send message
+    Route::post('api/conversations/{id}/send', [MessageController::class, 'send'])->name('sendMessage');
+    // fetch conversations containing input from search
+    Route::get('api/conversations/search/{input}', [MessageController::class, 'searchConversations'])->name('searchConversations');
 });
