@@ -29,7 +29,7 @@
 const changeMessages = (id,user_id) => {
     // get user avatar 
     let user_avatar = '';
-    if(user_avatar == null){
+    if(user.avatar_path == null){
         user_avatar = `https://avatars.dicebear.com/api/initials/${user.first_name.charAt(0)}${user.last_name.charAt(0)}.svg?backgroundColorLevel=300&fontSize=35`
     }else{
         user_avatar = `/storage/avatars/${user.avatar_path}`;
@@ -57,6 +57,7 @@ const changeMessages = (id,user_id) => {
         res => {
             let mes = document.getElementById("message-container");
             mes.innerHTML = "";
+            document.getElementById("message_form").action = "/api/conversations/" + id + "/send";
             res.map(message =>{
 
                 // if message sender id is equal to current user id then display message in right side
@@ -67,16 +68,15 @@ const changeMessages = (id,user_id) => {
                                 ${message.body}
                             </p>
                             <div class="img_cont_msg ">
-                                <img src="${avatar_rec}"
+                                <img src="${user_avatar}"
                                 height="50px" width="50px" class="rounded-circle">
-                                
                             </div>
                         </div>`;
                 }else{
                     mes.innerHTML +=
                         `<div class="d-flex justify-content-start mb-4">
                             <div class="img_cont_msg">
-                                <img src="${user_avatar}"
+                                <img src="${avatar_rec}"
                                 height="50px" width="50px" class="rounded-circle">
                             </div>
                             <p class="p-2 my-1 mx-2 rounded bg-light text-dark">
@@ -86,6 +86,7 @@ const changeMessages = (id,user_id) => {
 
                 }
             }
+            
             );
         }
     )
