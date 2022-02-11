@@ -26,6 +26,9 @@
 //             </div>
 //         `;
 // }
+
+
+
 const changeMessages = (id,user_id) => {
     // get user avatar 
     let user_avatar = '';
@@ -39,6 +42,10 @@ const changeMessages = (id,user_id) => {
     let avatar_rec = "";
     fetch("/api/user/" + user_id).then(res => res.json()).then(res => {
         // display user details
+
+        console.log("Running user fetch: " + "/api/user/" + user_id);
+        
+        console.log(res);
         document.getElementById("user-name").innerHTML = res.user.first_name + " " + res.user.last_name;
         avatar_rec = `https://avatars.dicebear.com/api/initials/${res.user.first_name.charAt(0)}${res.user.last_name.charAt(0)}.svg?backgroundColorLevel=300&fontSize=35`;
         if(res.user.avatar_path == null){
@@ -94,11 +101,13 @@ const changeMessages = (id,user_id) => {
 
 let container = document.getElementById('conv-container');
 window.onload = () => {
-    console.log(user);
+    console.log("/api/conversations/" + user.id);
     // fetch conversations from api
     fetch("/api/conversations/" + user.id)
         .then(res => res.json())
-        .then(res => res.map(function(conversation) {
+        .then(function(res) {
+            
+            res.map(function(conversation) {
         
             if(conversation.user.avatar_path == null){
                 image = `<img class="rounded-circle img-fluid m-3" width="60" height="60"
@@ -127,6 +136,19 @@ window.onload = () => {
                     </div>`;
             
             
-        }));
-    
+            }
+            );
+            
+
+        });
 };
+window.addEventListener("DOMContentLoaded", () => {
+    console.log("DOM loaded");
+
+    fetch("/api/conversations/" + user.id)
+        .then(res => res.json())
+        .then(function(res) {
+    changeMessages(res[0].id, res[0].user.id)
+        });
+    }
+);
