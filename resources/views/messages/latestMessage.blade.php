@@ -70,7 +70,7 @@
             
             <div class="align-items-end ">
                 <div class="card-footer ">
-                    <form  class="input-group" method="POST">
+                    <form  id='message_form' class="input-group" method="POST">
                         {{ csrf_field() }}
                         
                         <textarea name="body" class="form-control type_msg" placeholder="Type your message..."></textarea>
