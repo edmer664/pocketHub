@@ -61,6 +61,7 @@ class MessageController extends Controller
                 $user = User::find($conversation->sender_id);
             }
             $conversation->lastMessage = $lastMessage;
+            $conversation->time = $lastMessage->created_at->diffForHumans();
             $conversation->user = $user;
         };
 
