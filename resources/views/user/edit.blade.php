@@ -15,7 +15,7 @@
                 @endif
                 <img class="w-100 py-2 rounded-circle avatar d-none" width="60"
                     src="{{ url('storage/avatars/' . Auth::user()->avatar_path) }}" alt="">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
+                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#staticBackdrop">
                     Upload Image
                 </button>
                 <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
@@ -100,7 +100,8 @@
                                     </div>
                                     <div class="form-group row">
                                         <div class="offset-sm-2 col-sm-10">
-                                            <button type="submit" class="btn btn-danger">Save Changes</button>
+                                            <button type="submit" class="btn btn-success">Save Changes</button>
+                                            <a class="btn btn-secondary"  href="{{ route('profile') }}">Cancel</a>
                                         </div>
                                     </div>
                                 </form>
@@ -138,7 +139,8 @@
                                     </div>
                                     <div class="form-group row">
                                         <div class="offset-sm-2 col-sm-10">
-                                            <button type="submit" class="btn btn-danger">Save Changes</button>
+                                            <button type="submit" class="btn btn-success">Save Changes</button>
+                                            <a class="btn btn-secondary"  href="{{ route('profile') }}">Cancel</a>
                                         </div>
                                     </div>
                                 </form>
