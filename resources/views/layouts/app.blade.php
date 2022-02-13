@@ -42,6 +42,8 @@
     <script src="{{asset('assets/vendors/chart.js/Chart.min.js')}}"></script>
     <script src="{{asset('assets/js/demo/chart-area-demo.js')}}"></script>
     <script src="{{asset('assets/js/demo/chart-pie-demo.js')}}"></script>
+    <script src="https://kit.fontawesome.com/1e11a39cdc.js" crossorigin="anonymous"></script>
+
 </body>
 
 </html>
