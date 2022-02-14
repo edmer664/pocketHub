@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Conversation;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 
 class MessageController extends Controller
@@ -31,17 +32,16 @@ class MessageController extends Controller
     // make a new conversation 
     public function createCoversation(Request $request){
         // check if conversation exist
-        $conversation = Conversation::where('participants', $request->user()->id)
-            ->where('participants', $request->receiver_id)->first();
-        if($conversation){
-            return redirect()->back();
-        }
+        
         // create new conversation
         $conversation = new Conversation();
         $conversation->sender_id = $request->user()->id;
         $conversation->receiver_id = $request->receiver_id;
         $conversation->save();
-        return redirect()->back();
+        // return conversation id as json
+        return response()->json(['conversation_id'=>$conversation->id]);
+        
+        
     }
 
     // api calls
@@ -73,6 +73,7 @@ class MessageController extends Controller
         usort($conversations, function($a, $b) {
             return $b['lastMessage']['created_at'] <=> $a['lastMessage']['created_at'];
         });
+        $conversations = collect($conversations);
 
 
         return response()->json($conversations);
@@ -90,12 +91,27 @@ class MessageController extends Controller
     }
 
     // search conversations with first name as input
-    public function searchConversations(Request $request){
-        $conversations = Conversation::where('participants', $request->user()->id)
-            ->where('participants', $request->receiver_id)->get();
-        return response()->json($conversations);
+    public function searchUsers(Request $request,$name){
+        // search users where name is like first_name + last_name
+        $looked_up_users = User::where('first_name', 'like', '%'.$name.'%')
+            ->orWhere('last_name', 'like', '%'.$name.'%')->get();
+        // get conversations where looked_up_users and current user is sender or receiver
+        Log::info($looked_up_users);
+        return response()->json($looked_up_users);
+    }
+
+    // check if conversation exist then return conversation
+    public function checkConversation(Request $request,$id){
+        $conversation = Conversation::where('sender_id', $request->user()->id)->orWhere('receiver_id', $request->user()->id)
+            ->where('sender_id', $id)->orWhere('receiver_id',$id)->first();
+        if(($conversation->sender_id == $request->user()->id || $conversation->receiver_id == $request->user()->id) && ($conversation->sender_id == $id || $conversation->receiver_id == $id)){
+            return response()->json($conversation);
+        }
+        return response()->json(null);
     }
     
+
+
 
 }
 
