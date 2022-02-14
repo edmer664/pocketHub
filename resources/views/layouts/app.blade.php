@@ -38,7 +38,7 @@
     <script src="{{asset('assets/vendors/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{asset('assets/vendors/jquery-easing/jquery.easing.min.js')}}"></script>
     <script src="{{asset('assets/js/sb-admin-2.min.js')}}"></script>
-    <script src="{{asset('assets/js/custom.min.js')}}"></script>
+    <script src="{{asset('assets/js/user.js')}}"></script>
     <script src="{{asset('assets/vendors/chart.js/Chart.min.js')}}"></script>
     <script src="{{asset('assets/js/demo/chart-area-demo.js')}}"></script>
     <script src="{{asset('assets/js/demo/chart-pie-demo.js')}}"></script>
