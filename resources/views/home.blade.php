@@ -5,11 +5,11 @@
     <div class="row  ">
         <div class="col-auto py-3 d-none d-sm-inline-block pl-4">
             @if (Auth::user()->avatar_path == null)
-            <img class="rounded-circle img-fluid" width="70"
+            <img class="rounded-circle " width="80" height="80"
                 src="https://avatars.dicebear.com/api/initials/{{substr(Auth::user()->first_name, 0, 1) . substr(Auth::user()->last_name, 0, 1)}}.svg?backgroundColorLevel=300&fontSize=35"
                 alt="">
             @else
-            <img class="rounded-circle img-fluid" width="70"
+            <img class="rounded-circle" width="80" height="80"
                 src="{{ url('storage/avatars/' . Auth::user()->avatar_path) }}" alt="">
             @endif
         </div>
@@ -35,11 +35,11 @@
     <div class="row">
         <div class="col-auto py-3 px-4">
             @if ($post->author_avatar == null)
-            <img class="rounded-circle img-fluid" width="60"
+            <img class="rounded-circle" width="60" height="60"
                 src="https://avatars.dicebear.com/api/initials/{{substr($post->first_name, 0, 1) . substr($post->last_name, 0, 1)}}.svg?backgroundColorLevel=300&fontSize=35"
                 alt="">
             @else
-            <img class="rounded-circle img-fluid" width="60"
+            <img class="rounded-circle " width="60" height="60"
                 src="{{ url('storage/avatars/' . $post->author_avatar) }}" alt="">
             @endif
 
@@ -49,13 +49,18 @@
         </div>
         <div class="col text-right p-3">
             @if(Auth::user()->id == $post->user->id)
-                <button class="btn" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="false">
-                    <i class="fas fa-ellipsis-v"></i>
-                </button>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu2">
-                        <button class="dropdown-item" type="button">Edit</button>
-                        <button class="dropdown-item" type="button">Delete</button>
+            <button class="btn" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+            <i class="fas fa-ellipsis-v"></i>
+        </button>
+        
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu2">
+            <button onclick="" class="dropdown-item" type="button">Edit</button>
+            <form method="POST" action="{{ route('deletePost',$post->id)}}">
+                @csrf
+                @method('DELETE')
+                    <button class="dropdown-item" type="submit">Delete</button>
+            </form>
                 </div>
             @endif
         </div>
@@ -76,11 +81,16 @@
     </div>
     <div class="row justify-content-end pb-2 mr-4 ">
         <a  href="{{ route('showPost', ['id' => $post->id]) }}" class="pt-1 px-2 link-dark">
-            12 Comments
+            @if($post->comments == 0)
+                No comments
+            @else
+                {{ $post->comments }} Comments
+            @endif
         </a>
         <a type="button" href="{{ route('showPost', ['id' => $post->id]) }}" class="btn btn-primary btn-sm mb-3">
             <i class="fa-solid fa-comment p-1 "></i>Add Comment</a>
         </a>
+
     </div>
 </div>
 {{-- <div class="card my-2 container">

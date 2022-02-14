@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Post;
+use App\Models\Comment;
 
 use App\Models\User;
 
@@ -15,6 +16,10 @@ class UserController extends Controller
         //retrieve all user posts from database
         $user_id = Auth::user()->id;
         $posts = Post::where('author_id',$user_id)->orderBy('created_at', 'desc')->get();
+        // count comments for each post
+        foreach($posts as $post){
+            $post->comments_count = Comment::where('post_id',$post->id)->count();
+        }
 
         return view('user.profile',compact('posts'));
     }

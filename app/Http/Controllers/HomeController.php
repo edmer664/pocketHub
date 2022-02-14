@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Comment;
 
 class HomeController extends Controller
 {
@@ -22,6 +23,10 @@ class HomeController extends Controller
             $post->first_name = $user->first_name;
             $post->last_name = $user->last_name;
             $post->user = $user;
+            // get count of comments in the post
+            $comments = Comment::where('post_id', $post->id)->count();
+            $post->comments = $comments;
+
         }
         return view('home', compact('posts'));
     }
