@@ -77,9 +77,10 @@
                     </div>
                 </div>
             </div>
+          
             @foreach ($comments as $comment)
-            
-            <div class="card my-2 container">
+            <div class="card my-2 container">  
+                
                 <div class="row">
                     <div class="col-auto pt-1">
                         @if ($comment->user->avatar_path == null)
@@ -121,8 +122,9 @@
                 <div class="row justify-content-end pb-2 mr-4 ">
                     <small> {{ $comment->created_at->diffForHumans() }}</small>
                 </div>
-                @endforeach
-            </div>
+               
+            </div> 
+            @endforeach
         </div>
     </div>
 
