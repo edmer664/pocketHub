@@ -82,7 +82,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="inputName" class="col-sm-2 col-form-label">New</label>
+                                        <label for="inputName" class="col-sm-2 col-form-label">Last Name</label>
                                         <div class="col-sm-10">
                                             <input type="text" class="form-control" id="inputLastName"
                                                 placeholder="Last Name" value="{{ Auth::user()->last_name }}"
@@ -117,7 +117,7 @@
                                         <label for="inputCurrent" class="col-sm-2 col-form-label">Current </label>
                                         <div class="col-sm-10">
                                             <input type="password" class="form-control" id="currentPassword"
-                                                placeholder="Current" name="currentPassword">
+                                                placeholder="Current Password" name="currentPassword">
                                             <span class="text-danger error-text currentPassword"></span>
                                         </div>
                                     </div>
@@ -125,15 +125,15 @@
                                         <label for="inputNew" class="col-sm-2 col-form-label">New</label>
                                         <div class="col-sm-10">
                                             <input type="password" class="form-control" id="newPassword"
-                                                placeholder="New" name="newPassword">
+                                                placeholder="New Password" name="newPassword">
                                             <span class="text-danger error-text newPassword"></span>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="inputReType" class="col-sm-2 col-form-label">Re-type New</label>
+                                        <label for="inputReType" class="col-sm-2 col-form-label">Re-type new</label>
                                         <div class="col-sm-10">
                                             <input type="password" class="form-control" id="reTypePassword"
-                                                placeholder="Re-type" name="reTypePassword">
+                                                placeholder="Re-type password" name="reTypePassword">
                                             <span class="text-danger error-text reTypePassword"></span>
                                         </div>
                                     </div>
