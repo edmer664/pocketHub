@@ -49,5 +49,9 @@ Route::group(['middleware'=>['auth','PreventBackHistory']], function(){
     // send message
     Route::post('api/conversations/{id}/send', [MessageController::class, 'send'])->name('sendMessage');
     // fetch conversations containing input from search
-    Route::get('api/conversations/search/{input}', [MessageController::class, 'searchConversations'])->name('searchConversations');
+    Route::get('api/users/search/{input}', [MessageController::class, 'searchUsers'])->name('searchUsers');
+    // create conversation
+    Route::post('api/conversations/create', [MessageController::class, 'createCoversation'])->name('createConversation');
+    // check conversation
+    Route::get('api/conversations/check/{id}', [MessageController::class, 'checkConversation'])->name('checkConversation');
 });
