@@ -53,7 +53,7 @@ class UserController extends Controller
     }
 
     public function changePassword(Request $request){
-            $validator = \Validator::make($request->all(),[
+            $validator = Validator::make($request->all(),[
                 'currentPassword'=>[
                     'required', function($attribute, $value, $fail){
                         if( !\Hash::check($value, Auth::user()->password) ){
@@ -91,8 +91,7 @@ class UserController extends Controller
     }
 
     public function uploadAvatar(Request $request){
-        
-        $validator =  \Validator::make($request->all(),[
+        $validator =  Validator::make($request->all(),[
             'avatar' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
         ]);
 
@@ -128,13 +127,43 @@ class UserController extends Controller
         }
     }
 
-    // get user info
     public function getUserInfo(Request $request, $id){
         $user = User::find($id);
         if( !$user ){
             return response()->json(['status'=>0,'msg'=>'User not found.']);
         }else{
             return response()->json(['status'=>1,'user'=>$user]);
+        }
+    }
+
+    public function deactivate(Request $request){
+        $validator = Validator::make($request->all(),[
+            'email'=>[
+                'required', function($attribute, $value, $fail){
+                    if($value !== Auth::user()->email){
+                        return $fail(__('Incorrect'));
+                    }
+                },
+            ],
+            'password'=>[
+                'required', function($attribute, $value, $fail){
+                    if( !\Hash::check($value, Auth::user()->password) ){
+                        return $fail(__('Incorrect'));
+                    }
+                },
+                'min:8',
+                'max:30'
+            ]
+        ]);
+
+        if( !$validator->passes() ){
+            return response()->json(['status'=>0,'error'=>$validator->errors()->toArray()]);
+        }else{
+
+            $delete = User::find(Auth::user()->id);
+            $delete->delete();
+            Auth::logout();
+            return redirect('/');
         }
     }
 }
