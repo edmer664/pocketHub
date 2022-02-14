@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="card border-left-primary shadow">
+<div class="card border-left-primary shadow pt-3">
     <div class="row  ">
         <div class="col-auto py-3 d-none d-sm-inline-block pl-4">
             @if (Auth::user()->avatar_path == null)
@@ -13,12 +13,12 @@
                 src="{{ url('storage/avatars/' . Auth::user()->avatar_path) }}" alt="">
             @endif
         </div>
-        <div class="col ">
+        <div class="col">
             <form action="{{ route('createPost') }}" method="POST">
                 {{ csrf_field() }}
-                <div class="row py-2 mx-3">
+                <div class="row py-2 mr-3 ml-2">
                     <div class="input-group">
-                        <textarea class="form-control custom-control " placeholder="What's in your Mind?"
+                        <textarea class="form-control custom-control " placeholder="What's in your mind, {{ Auth::user()->first_name }}? "
                         name='content' rows="3" style="resize:none"></textarea>
                     </div>
                 </div>
@@ -29,7 +29,7 @@
         </div>
     </div>
 </div>
-<h4 class="my-3">Posts</h4>
+<h3 class="my-3" style="color:#4267d6">Posts</h3>
 @foreach ($posts as $post)
 <div class="card my-2 ">
     <div class="row">
@@ -44,7 +44,7 @@
             @endif
 
         </div>
-        <div class="col pt-3">
+        <div class="col pt-4">
             <h5 class="card-title font-weight-bolder">{{ $post->first_name . " " . $post->last_name }} </h5>
         </div>
         <div class="col text-right p-3">
@@ -88,7 +88,7 @@
             @endif
         </a>
         <a type="button" href="{{ route('showPost', ['id' => $post->id]) }}" class="btn btn-primary btn-sm mb-3">
-            <i class="fa-solid fa-comment p-1 "></i>Add Comment</a>
+            <i class="fa-solid fa-comment p-1 "></i>Comment</a>
         </a>
 
     </div>

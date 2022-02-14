@@ -44,7 +44,7 @@
                     </div>
                 </div>
             </div>
-            <h3 class="my-3">Comments</h3>
+            <h3 class="my-3" style="color:#4267d6">Comments</h3>
             <div class="card border-left-primary shadow container">
                 <div class="row  ">
                     <div class="col-auto py-3 d-none d-sm-inline-block">
