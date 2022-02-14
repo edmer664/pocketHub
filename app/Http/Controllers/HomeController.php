@@ -21,6 +21,7 @@ class HomeController extends Controller
             $post->author_avatar = $avatar_path;
             $post->first_name = $user->first_name;
             $post->last_name = $user->last_name;
+            $post->user = $user;
         }
         return view('home', compact('posts'));
     }

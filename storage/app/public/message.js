@@ -1,34 +1,3 @@
-// function displayConversation(res) {
-//     
-
-//     if(res.last_user.avatar_path == null){
-//         image = `<img class="rounded-circle img-fluid m-3" width="60" height="60"
-//         src="https://avatars.dicebear.com/api/initials/{{substr(Auth::user()->first_name, 0, 1) . substr(Auth::user()->last_name, 0, 1)}}.svg?backgroundColorLevel=300&fontSize=35"
-//         alt="">`
-//     }else{
-//         image = `<img class="rounded-circle img-fluid" width="60" height="60"
-//             src="{{ url('storage/avatars/' . Auth::user()->avatar_path) }}" alt="">
-//         `}
-
-//     container.innerHTML = `
-//     <div class="card border-0 py-4 ">
-//                 <div class=" border-bottom border-dark ">
-//                     <div class="d-flex">
-//                         <div class="pr-2">
-//                         ${image}
-//                         </div>
-//                         <div class="pb-2">
-//                             <span>res</span>
-//                             <p> Hi, I'm Fine Thank you <small class="pl-5">3 mins</small></p>
-//                         </div>
-//                     </div>
-//                 </div>
-//             </div>
-//         `;
-// }
-
-
-
 const changeMessages = (id,user_id) => {
     // get user avatar 
     let user_avatar = '';
@@ -128,7 +97,7 @@ window.onload = () => {
                                     </div>
                                     <div class="pb-2">
                                         <span>${conversation.user.first_name} ${conversation.user.last_name}</span>
-                                        <p> ${conversation.lastMessage.body} <small class="pl-5">3 min</small></p>
+                                        <p> ${conversation.lastMessage.body} <small class="pl-5">${conversation.time}</small></p>
                                     </div>
                                 </div>
                             </div>

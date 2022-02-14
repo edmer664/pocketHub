@@ -48,14 +48,16 @@
             <h5 class="card-title font-weight-bolder">{{ $post->first_name . " " . $post->last_name }} </h5>
         </div>
         <div class="col text-right p-3">
-            <button class="btn" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true"
-                aria-expanded="false">
-                <i class="fas fa-ellipsis-v"></i>
-            </button>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu2">
-                <button class="dropdown-item" type="button">Edit</button>
-                <button class="dropdown-item" type="button">Delete</button>
-            </div>
+            @if(Auth::user()->id == $post->user->id)
+                <button class="btn" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                    <i class="fas fa-ellipsis-v"></i>
+                </button>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu2">
+                        <button class="dropdown-item" type="button">Edit</button>
+                        <button class="dropdown-item" type="button">Delete</button>
+                </div>
+            @endif
         </div>
     </div>
 
