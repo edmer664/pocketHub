@@ -27,6 +27,8 @@ Route::group(['middleware'=>['auth','PreventBackHistory']], function(){
     Route::put('update-profile-info', [UserController::class, 'update'])->name('updateInfo');
     Route::put('change-password', [UserController::class, 'changePassword'])->name('changePassword');
     Route::put('upload-avatar', [UserController::class, 'uploadAvatar'])->name('uploadAvatar');
+    Route::delete('deactivate', [UserController::class, 'deactivate'])->name('deactivate');
+
     Route::post('creat-poste', [PostController::class, 'create'])->name('createPost');
     Route::put('edit-post/{id}', [PostController::class, 'edit'])->name('editPost');
     Route::delete('delete-post/{id}', [PostController::class, 'delete'])->name('deletePost');
