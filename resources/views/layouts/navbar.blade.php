@@ -4,7 +4,7 @@
     </button>
     <div class="topbar-divider d-none d-sm-block"></div>
     @auth
-    <h4>Home</h4>
+    <h3>Home</h3>
     @endauth
     <ul class="navbar-nav ml-auto">
         <div class="topbar-divider d-none d-sm-block"></div>
