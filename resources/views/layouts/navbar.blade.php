@@ -19,7 +19,7 @@
                     src="https://avatars.dicebear.com/api/initials/{{substr(Auth::user()->first_name, 0, 1) . substr(Auth::user()->last_name, 0, 1)}}.svg?backgroundColorLevel=300&fontSize=35"
                     alt="">
                 @else
-                <img class="image-profile rounded-circle img-fluid avatar-hide " width="40" height="0"
+                <img class="image-profile rounded-circle  avatar-hide " width="40" height="40"
                     src="{{ url('storage/avatars/' . Auth::user()->avatar_path) }}" alt="">
                 @endif
                 <img class="image-profile rounded-circle  avatar d-none" width="40" height="40"
