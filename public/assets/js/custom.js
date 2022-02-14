@@ -82,6 +82,9 @@ $(function () {
                         $(this).attr("src", data.url + "/storage/avatars/" + data.avatar);
                         $(this).removeClass("d-none");
                     });
+                    $('.avatar-hide').each(function () {
+                        $(this).addClass("d-none");
+                    });
                     $('#uploadImage')[0].reset();
                     $('#staticBackdrop').modal('hide')
                     alert(data.msg);
