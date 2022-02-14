@@ -46,7 +46,11 @@ class MessageController extends Controller
 
     // api calls
     // get conversations
+    
+
     public function getConversations(Request $request,$id){
+
+
         // get conversations where user is sender or receiver
         $conversations = Conversation::where('sender_id', $id)
             ->orWhere('receiver_id', $id)->get();
@@ -64,9 +68,19 @@ class MessageController extends Controller
             $conversation->time = $lastMessage->created_at->diffForHumans();
             $conversation->user = $user;
         };
+        $conversations = $conversations->toArray();
+        // sort conversations by last message
+        usort($conversations, function($a, $b) {
+            return $b['lastMessage']['created_at'] <=> $a['lastMessage']['created_at'];
+        });
+
 
         return response()->json($conversations);
     }
+   
+    
+
+
     // get messages in descending order
     public function getMessages(Request $request, $id){
         // get last 20 messages where conversation id is equal to the id
