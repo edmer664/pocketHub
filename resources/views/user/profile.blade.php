@@ -99,7 +99,11 @@
     </div>
     <div class="row justify-content-end pb-2 mr-4 ">
         <a href="{{ route('showPost', ['id' => $post->id]) }}" class="pt-2 px-2 link-dark">
-            12 Comments
+            @if($post->comments_count == 0)
+                No comment
+            @else
+                {{ $post->comments_count }} comments
+            @endif
         </a>
         <a type="button" class="btn btn-primary btn-sm mb-3"href="{{ route('showPost', ['id' => $post->id]) }}"><i
                 class="fa-solid fa-comment p-1 "></i>Add Comment</a>
