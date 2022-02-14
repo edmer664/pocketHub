@@ -89,7 +89,8 @@ const changeMessages = (id, user_id) => {
             res.map((message) => {
                 // if message sender id is equal to current user id then display message in right side
                 if (message.sender_id === user.id) {
-                    mes.innerHTML += `<div class="d-flex justify-content-end mb-4">
+                    mes.innerHTML += 
+                    `<div class="d-flex justify-content-end mb-4">
                             <p class="p-2 my-1 mx-2 rounded bg-warning text-white">
                                 ${message.body}
                             </p>
@@ -97,7 +98,7 @@ const changeMessages = (id, user_id) => {
                                 <img src="${user_avatar}"
                                 height="50px" width="50px" class="rounded-circle">
                             </div>
-                        </div>`;
+                    </div>`;
                 } else {
                     mes.innerHTML += `<div class="d-flex justify-content-start mb-4">
                             <div class="img_cont_msg">
@@ -230,7 +231,7 @@ const searchUser = () => {
         .then((res) => {
             res.map((result) => {
                 if (result.avatar_path == null) {
-                    image = `<img class="rounded-circle img-fluid m-3" width="60" height="60"
+                    image = `<img class="rounded-circle  m-3" width="60" height="60"
                 src="https://avatars.dicebear.com/api/initials/${result.first_name.charAt(
                     0
                 )}${result.last_name.charAt(
@@ -238,26 +239,23 @@ const searchUser = () => {
                     )}.svg?backgroundColorLevel=300&fontSize=35"
                 alt="">`;
                 } else {
-                    image = `<img class="rounded-circle img-fluid" width="60" height="60"
+                    image = `<img class="rounded-circle " width="60" height="60"
                     src="/storage/avatars/${result.avatar_path}" alt="">
                 `;
                 }
                 document.getElementById("conv-container").innerHTML = `
-            <div class="card border-0 py-4 ">
-                <button onclick="startConversation(${result.id},${user.id})">
-                    <div class=" border-bottom border-dark ">
-                        <div class="d-flex">
-                            <div class="pr-2">
-                            ${image}
+                <a role="button" onclick="startConversation(${result.id},${user.id})" class="link-dark stretched-link text-decoration-none">
+                    <div class=" card p-2 m-1">
+                        <div class="row">
+                            <div class="col-auto">
+                                ${image}
                             </div>
-                            <div class="pb-2">
-                                <h3>${result.first_name} ${result.last_name}</h3>
-                                
+                            <div class="col align-self-center">
+                                <h5 class="text-muted font-weight-bolder">${result.first_name} ${result.last_name}</h5>
                             </div>
                         </div>
                     </div>
-                </button>
-            </div>
+                </a>
             `;
             });
         });
