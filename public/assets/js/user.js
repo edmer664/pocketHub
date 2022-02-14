@@ -92,4 +92,32 @@ $(function () {
             }
         });
     });
+
+    $('#deactivateForm').on('submit', function (e) {
+        e.preventDefault();
+        $.ajax({
+            url: $(this).attr('action'),
+            method: $(this).attr('method'),
+            data: new FormData(this),
+            processData: false,
+            dataType: 'json',
+            contentType: false,
+            beforeSend: function () {
+                $(document).find('span.error-text').text('');
+            },
+            success: function (data) {
+                if (data.status == 0) {
+                    console.log(data.status)
+                    $.each(data.error, function (prefix, val) {
+                        $('span.error-text'+'.'+prefix).text(val[0]);
+                    });
+                }
+            },
+            error: function (httpObj) {
+                if(httpObj.status==401){
+                    location.reload();
+                }  
+            }
+        });
+    });
 });

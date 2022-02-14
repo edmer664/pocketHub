@@ -63,6 +63,10 @@
                             <a class="nav-link" id="password-tab" data-toggle="tab" href="#changePassword" role="tab"
                                 aria-controls="password" aria-selected="false">Password</a>
                         </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link" id="password-tab" data-toggle="tab" href="#deactivate" role="tab"
+                                aria-controls="password" aria-selected="false">Deactivate</a>
+                        </li>
                     </ul>
                     <div class="tab-content w-100" id="tabContent">
                         <div class="tab-pane fade show active" id="profileInfo" role="tabpanel"
@@ -140,6 +144,37 @@
                                     <div class="form-group row">
                                         <div class="offset-sm-2 col-sm-10">
                                             <button type="submit" class="btn btn-success">Save Changes</button>
+                                            <a class="btn btn-secondary"  href="{{ route('profile') }}">Cancel</a>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="deactivate" role="tabpanel" aria-labelledby="deactivate-tab">
+                            <div class="active tab-pane" id="deactivate">
+                                <form class="form-horizontal  pt-3" method="POST" action="{{ route('deactivate') }}"
+                                    id="deactivateForm">
+                                    {{ csrf_field() }}
+                                    {{ method_field('delete') }}
+                                    <div class="form-group row">
+                                        <label for="inputCurrent" class="col-sm-2 col-form-label">Email</label>
+                                        <div class="col-sm-10">
+                                            <input type="email" class="form-control" id="email"
+                                                placeholder="Email" name="email">
+                                            <span class="text-danger error-text email"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputReType" class="col-sm-2 col-form-label">Password</label>
+                                        <div class="col-sm-10">
+                                            <input type="password" class="form-control" id="password"
+                                                placeholder="Password" name="password">
+                                            <span class="text-danger error-text password"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="offset-sm-2 col-sm-10">
+                                            <button type="submit" class="btn btn-danger">Deactivate</button>
                                             <a class="btn btn-secondary"  href="{{ route('profile') }}">Cancel</a>
                                         </div>
                                     </div>
