@@ -153,7 +153,7 @@
                         <div class="tab-pane fade" id="deactivate" role="tabpanel" aria-labelledby="deactivate-tab">
                             <div class="active tab-pane" id="deactivate">
                                 <form class="form-horizontal  pt-3" method="POST" action="{{ route('deactivate') }}"
-                                    id="userPasswordForm">
+                                    id="deactivateForm">
                                     {{ csrf_field() }}
                                     {{ method_field('delete') }}
                                     <div class="form-group row">
