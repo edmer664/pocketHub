@@ -4,7 +4,7 @@
 
 <div class="card mb-3 w-100">
     <div class="row no-gutters">
-        <div class="col-md-2">
+        <div class="col-lg-2">
             @if (Auth::user()->avatar_path == null)
             <img class="rounded-circle  mx-4 my-2" width="150" height="150"
                 src="https://avatars.dicebear.com/api/initials/{{substr(Auth::user()->first_name, 0, 1) . substr(Auth::user()->last_name, 0, 1)}}.svg?backgroundColorLevel=300&fontSize=35"
@@ -30,11 +30,11 @@
     <div class="row  ">
         <div class="col-auto py-3 d-none d-sm-inline-block pl-4">
             @if (Auth::user()->avatar_path == null)
-            <img class="rounded-circle img-fluid" width="70"
+            <img class="rounded-circle " width="60" height="60"
                 src="https://avatars.dicebear.com/api/initials/{{substr(Auth::user()->first_name, 0, 1) . substr(Auth::user()->last_name, 0, 1)}}.svg?backgroundColorLevel=300&fontSize=35"
                 alt="">
             @else
-            <img class="rounded-circle img-fluid" width="70"
+            <img class="rounded-circle " width="60" height="60"
                 src="{{ url('storage/avatars/' . Auth::user()->avatar_path) }}" alt="">
             @endif
         </div>
@@ -61,11 +61,11 @@
     <div class="row">
         <div class="col-auto pt-1">
             @if (Auth::user()->avatar_path == null)
-            <img class="rounded-circle img-fluid m-3" width="50" height="50"
+            <img class="rounded-circle  m-3" width="50" height="50"
                 src="https://avatars.dicebear.com/api/initials/{{substr(Auth::user()->first_name, 0, 1) . substr(Auth::user()->last_name, 0, 1)}}.svg?backgroundColorLevel=300&fontSize=35"
                 alt="">
             @else
-            <img class="rounded-circle img-fluid" width="50" height="50"
+            <img class="rounded-circle m-3 " width="50" height="50"
                 src="{{ url('storage/avatars/' . Auth::user()->avatar_path) }}" alt="">
             @endif
         </div>

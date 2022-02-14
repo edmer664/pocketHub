@@ -5,11 +5,11 @@
     <div class="row  ">
         <div class="col-auto py-3 d-none d-sm-inline-block pl-4">
             @if (Auth::user()->avatar_path == null)
-            <img class="rounded-circle img-fluid" width="70"
+            <img class="rounded-circle " width="80" height="80"
                 src="https://avatars.dicebear.com/api/initials/{{substr(Auth::user()->first_name, 0, 1) . substr(Auth::user()->last_name, 0, 1)}}.svg?backgroundColorLevel=300&fontSize=35"
                 alt="">
             @else
-            <img class="rounded-circle img-fluid" width="70"
+            <img class="rounded-circle" width="80" height="80"
                 src="{{ url('storage/avatars/' . Auth::user()->avatar_path) }}" alt="">
             @endif
         </div>
@@ -35,11 +35,11 @@
     <div class="row">
         <div class="col-auto py-3 px-4">
             @if ($post->author_avatar == null)
-            <img class="rounded-circle img-fluid" width="60"
+            <img class="rounded-circle" width="60" height="60"
                 src="https://avatars.dicebear.com/api/initials/{{substr($post->first_name, 0, 1) . substr($post->last_name, 0, 1)}}.svg?backgroundColorLevel=300&fontSize=35"
                 alt="">
             @else
-            <img class="rounded-circle img-fluid" width="60"
+            <img class="rounded-circle " width="60" height="60"
                 src="{{ url('storage/avatars/' . $post->author_avatar) }}" alt="">
             @endif
 
