@@ -49,13 +49,18 @@
         </div>
         <div class="col text-right p-3">
             @if(Auth::user()->id == $post->user->id)
-                <button class="btn" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="false">
-                    <i class="fas fa-ellipsis-v"></i>
-                </button>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu2">
-                        <button class="dropdown-item" type="button">Edit</button>
-                        <button class="dropdown-item" type="button">Delete</button>
+            <button class="btn" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+            <i class="fas fa-ellipsis-v"></i>
+        </button>
+        
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu2">
+            <button onclick="" class="dropdown-item" type="button">Edit</button>
+            <form method="POST" action="{{ route('deletePost',$post->id)}}">
+                @csrf
+                @method('DELETE')
+                    <button class="dropdown-item" type="submit">Delete</button>
+            </form>
                 </div>
             @endif
         </div>
@@ -76,11 +81,16 @@
     </div>
     <div class="row justify-content-end pb-2 mr-4 ">
         <a  href="{{ route('showPost', ['id' => $post->id]) }}" class="pt-1 px-2 link-dark">
-            12 Comments
+            @if($post->comments == 0)
+                No comments
+            @else
+                {{ $post->comments }} Comments
+            @endif
         </a>
         <a type="button" href="{{ route('showPost', ['id' => $post->id]) }}" class="btn btn-primary btn-sm mb-3">
             <i class="fa-solid fa-comment p-1 "></i>Add Comment</a>
         </a>
+
     </div>
 </div>
 {{-- <div class="card my-2 container">
