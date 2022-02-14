@@ -103,10 +103,10 @@
                         </button>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu2"> 
                             <button class="dropdown-item" type="button">Edit</button>
-                            <form method="POST" action="{{ route('deletePost',$post->id)}}">
+                            <form method="POST" action="{{ route('deleteComment',$comment->id)}}">
                                 @csrf
                                 @method('DELETE')
-                                <button class="dropdown-item" type="button">Delete</button>
+                                <button class="dropdown-item" type="submit">Delete</button>
                             </form>
                         </div>
                     </div>
