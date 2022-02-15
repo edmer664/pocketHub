@@ -21,6 +21,7 @@
                                 <h4 class="mt-4"> {{ $user->first_name . " " . $user->last_name }} </h4>
                             </div>
                             <div class="col-auto " >
+                                @if ($user->id == Auth::user()->id)
                                 <button class="btn" type="button" id="dropdownMenu2" data-toggle="dropdown"
                                     aria-haspopup="true" aria-expanded="false">
                                     <i class="fas fa-ellipsis-v"></i>
@@ -29,6 +30,7 @@
                                     <button class="dropdown-item" type="button">Edit</button>
                                     <button class="dropdown-item" type="button">Delete</button>
                                 </div>
+                                @endif
                             </div>
                         </div>
                     </div>

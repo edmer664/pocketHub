@@ -244,7 +244,7 @@ const searchUser = () => {
                 `;
                 }
                 document.getElementById("conv-container").innerHTML = `
-                <a role="button" onclick="startConversation(${result.id},${user.id})" class="link-dark stretched-link text-decoration-none">
+                <a href="#" onclick="startConversation(${result.id},${user.id})" class="link-dark text-decoration-none">
                     <div class=" card p-2 m-1">
                         <div class="row">
                             <div class="col-auto">
