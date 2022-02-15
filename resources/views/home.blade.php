@@ -14,17 +14,17 @@
             @endif
         </div>
         <div class="col">
-            <form action="{{ route('createPost') }}" method="POST">
+            <form action="{{ route('createPost') }}" method="POST" id="createPostHome">
                 {{ csrf_field() }}
                 <div class="row py-2 mr-3 ml-2">
                     <div class="input-group">
                         <textarea class="form-control custom-control "
                             placeholder="What's in your mind, {{ Auth::user()->first_name }}? " name='content' rows="3"
-                            style="resize:none"></textarea>
+                            style="resize:none" required></textarea>
                     </div>
                 </div>
                 <div class="row justify-content-end mx-3">
-                    <button type="submit" class="input-group-addon btn btn-primary mb-2">Post</button>
+                    <button type="submit" class="input-group-addon btn btn-primary mb-2" id="createPostHomeBtn" disabled>Post</button>
                 </div>
             </form>
         </div>

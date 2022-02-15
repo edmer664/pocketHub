@@ -64,16 +64,16 @@
                         @endif
                     </div>
                     <div class="col ">
-                        <form action="{{ route('addComment', $post->id) }}" method="POST">
+                        <form action="{{ route('addComment', $post->id) }}" method="POST" id="addComment">
                             {{ csrf_field() }}
                             <div class="row py-2 mx-3">
                                 <div class="input-group">
                                     <textarea class="form-control custom-control " placeholder="What's in your Mind?"
-                                        name='content' id="comment" rows="3" style="resize:none"></textarea>
+                                        name='content' id="comment" rows="3" style="resize:none" required></textarea>
                                 </div>
                             </div>
                             <div class="row justify-content-end mx-3">
-                                <button type="submit" class="input-group-addon btn btn-primary mb-2">Post</button>
+                                <button type="submit" class="input-group-addon btn btn-primary mb-2" id="addCommentBtn" disabled>Post</button>
                             </div>
                         </form>
                     </div>
