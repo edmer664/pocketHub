@@ -39,16 +39,16 @@
             @endif
         </div>
         <div class="col ">
-            <form action="{{ route('createPost') }}" method="POST">
+            <form action="{{ route('createPost') }}" method="POST" id="createPostProfile">
                 {{ csrf_field() }}
                 <div class="row py-2 mx-3">
                     <div class="input-group">
                         <textarea class="form-control custom-control " placeholder="What's in your Mind?"
-                        name='content' rows="3" style="resize:none"></textarea>
+                        name='content' rows="3" style="resize:none" required></textarea>
                     </div>
                 </div>
                 <div class="row justify-content-end mx-3">
-                    <button type="submit" class="input-group-addon btn btn-primary mb-2">Post</button>
+                    <button type="submit" class="input-group-addon btn btn-primary mb-2" id="createPostProfileBtn" disabled>Post</button>
                 </div>
             </form>
         </div>

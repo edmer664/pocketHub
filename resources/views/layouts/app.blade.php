@@ -42,6 +42,7 @@
     <script src="{{asset('assets/js/sb-admin-2.min.js')}}"></script>
     <script src="{{asset('assets/js/toaster/bootstrap-toaster.min.js')}}"></script>
     <script src="{{asset('assets/js/user.min.js')}}"></script>
+    <script src="{{asset('assets/js/post.min.js')}}"></script>
     <script src="{{asset('assets/vendors/chart.js/Chart.min.js')}}"></script>
     <script src="{{asset('assets/js/demo/chart-area-demo.js')}}"></script>
     <script src="{{asset('assets/js/demo/chart-pie-demo.js')}}"></script>
