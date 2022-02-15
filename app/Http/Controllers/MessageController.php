@@ -102,21 +102,25 @@ class MessageController extends Controller
 
     // check if conversation exist then return conversation
     public function checkConversation(Request $request,$id){
+        // check if conversation exists
         $conversation = Conversation::where('sender_id', $request->user()->id)->orWhere('receiver_id', $request->user()->id)
             ->where('sender_id', $id)->orWhere('receiver_id',$id)->first();
-        Log::info("Current user: " . $request->user()->id);
-        Log::info("Other user: " . $conversation->sender_id);
-        Log::info("Current conversation: " . $conversation->id);
-        Log::info("Receiver Id " . $conversation->receiver_id);
+        if($conversation){
+            Log::info("Current user: " . $request->user()->id);
+            Log::info("Other user: " . $conversation->sender_id);
+            Log::info("Current conversation: " . $conversation->id);
+            Log::info("Receiver Id " . $conversation->receiver_id);
 
-        if(($conversation->sender_id == $request->user()->id || $conversation->receiver_id == $request->user()->id) && ($conversation->sender_id == $id || $conversation->receiver_id == $id)){
-            Log::info("Condition Met");
-            return response()->json($conversation);
+            if(($conversation->sender_id == $request->user()->id || $conversation->receiver_id == $request->user()->id) && ($conversation->sender_id == $id || $conversation->receiver_id == $id)){
+                Log::info("Condition Met");
+                return response()->json($conversation);
+            }else{
+                Log::info("Condition not met");
+            }
         }else{
-            Log::info("Condition not met");
-        }
 
         return response()->json(null);
+        }
     }
     
 
