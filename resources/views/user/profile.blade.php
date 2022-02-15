@@ -78,7 +78,7 @@
                 <i class="fas fa-ellipsis-v"></i>
             </button>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu2">
-                <button class="dropdown-item" type="button">Edit</button>
+                <a href="{{ route('showEditForm', ['id' => $post->id]) }}" class="dropdown-item" type="button">Edit</a>
                 <form action="{{ route('deletePost', $post->id) }}" method="POST">
                     @csrf
                     @method('DELETE')
