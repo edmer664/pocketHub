@@ -31,7 +31,7 @@
 </div>
 <h3 class="my-3" style="color:#4267d6">Posts</h3>
 @foreach ($posts as $post)
-<div class="card my-2 ">
+<div class="card my-5 ">
     <div class="row">
         <div class="col-auto py-3 px-4">
             @if ($post->author_avatar == null)
@@ -49,18 +49,19 @@
         </div>
         <div class="col text-right p-3">
             @if(Auth::user()->id == $post->user->id)
-            <button class="btn" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false">
-            <i class="fas fa-ellipsis-v"></i>
-        </button>
-        
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu2">
-            <button onclick="" class="dropdown-item" type="button">Edit</button>
-            <form method="POST" action="{{ route('deletePost',$post->id)}}">
-                @csrf
-                @method('DELETE')
-                    <button class="dropdown-item" type="submit">Delete</button>
-            </form>
+                <button class="btn" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                    <i class="fas fa-ellipsis-v"></i>
+                </button>
+                
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu2">
+
+                    <button onclick="editPost({{$post->id}})" class="dropdown-item" type="button">Edit</button>
+                    <form method="POST" action="{{ route('deletePost',$post->id)}}">
+                        @csrf
+                        @method('DELETE')
+                            <button class="dropdown-item" type="submit">Delete</button>
+                    </form>
                 </div>
             @endif
         </div>
@@ -93,6 +94,7 @@
 
     </div>
 </div>
+
 {{-- <div class="card my-2 container">
     <div class="row">
         <div class="col-auto pt-1">
@@ -129,6 +131,11 @@
             Comment</a>
     </div>
 </div> --}}
+<script>
+    const editPost = (post) => {
+        window.location.href = "/edit-post/" + post;
+    }
+</script>
 @endforeach
 
 
