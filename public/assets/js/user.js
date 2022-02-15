@@ -26,7 +26,7 @@ $(function () {
                     $('.name').each(function () {
                         $(this).html($('#userInfoForm').find($('input[name="first_name"]')).val() +' '+ $('#userInfoForm').find($('input[name="last_name"]')).val());
                     });
-                    alert(data.msg);
+                    Toast.create("Success", data.msg , TOAST_STATUS.SUCCESS, 5000);
                 }
             }
         });
@@ -51,7 +51,7 @@ $(function () {
                     });
                 } else {
                     $('#userPasswordForm')[0].reset();
-                    alert(data.msg);
+                    Toast.create("Success", data.msg , TOAST_STATUS.SUCCESS, 5000);
                 }
             }
         });
@@ -86,8 +86,8 @@ $(function () {
                         $(this).addClass("d-none");
                     });
                     $('#uploadImage')[0].reset();
+                    Toast.create("Success", data.msg , TOAST_STATUS.SUCCESS, 5000);
                     $('#staticBackdrop').modal('hide')
-                    alert(data.msg);
                 }
             }
         });
