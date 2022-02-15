@@ -138,9 +138,15 @@ window.onload = () => {
                 `;
                 }
                 container.innerHTML += `
+<<<<<<< HEAD
                     <div class="card border-0 py-1 ">
                         <button onclick="changeMessages(${conversation.id},${conversation.user.id})" class="bg-transparent border-0">
                             <div class=" border-dark border-bottom">
+=======
+                    <div class="card border-0 py-4 ">
+                        <button onclick="changeMessages(${conversation.id},${conversation.user.id})" class="bg-transparent border-primary">
+                            <div class=" border-dark ">
+>>>>>>> 5440d496624b589c31b2f7fe4a1d1e1f35cf657b
                                 <div class="d-flex">
                                     <div class="pr-2">
                                     ${image}
