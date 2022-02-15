@@ -27,17 +27,17 @@
             {{-- end --}}
         </div>
     </div>
-    <div class="col d-none d-sm-inline-block ">
+    <div class="col d-none d-sm-inline-block h-100">
         <div class="d-flex  flex-column  w-100 h-100 ">
             <div class="p-2 ">
-                <div class="py-5" id="conversation-details">
+                <div class="py-2" id="conversation-details">
                     <img id="user-image" src="img/undraw_profile.svg" class="rounded-circle float-left m-2 " width="50px"
                         alt="...">
                     <h5  id="user-name" class="font-weight-bold p-3">Jane Doe</h5>
                 </div>
                 <hr>
             </div>
-            <div  id="message-container" class="p-2  h-100">
+            <div  id="message-container" class="p-2 overflow-auto h-75 d-flex flex-column-reverse">
                 
             </div>
 
