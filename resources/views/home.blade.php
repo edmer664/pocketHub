@@ -32,7 +32,7 @@
 </div>
 <h3 class="my-3" style="color:#4267d6">Posts</h3>
 @foreach ($posts as $post)
-<div class="card my-2 ">
+<div class="card my-3 ">
     <div class="row">
         <div class="col-auto py-3 px-4">
             @if ($post->author_avatar == null)

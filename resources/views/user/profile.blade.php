@@ -55,7 +55,7 @@
     </div>
 </div>
 
-<h4 class="my-3">Posts</h4>
+<h3 class="my-3" style="color:#4267d6">Posts</h3>
 @foreach ($posts as $post)
 <div class="card my-3 ">
     <div class="row">
@@ -70,7 +70,7 @@
             @endif
         </div>
         <div class="col pt-3">
-            <h5 class="card-title font-weight-bolder">Jane Doe </h5>
+            <h5 class="card-title font-weight-bolder">{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</h5>
         </div>
         <div class="col text-right p-3">
             <button class="btn" type="button" id="dropdownMenu2" data-toggle="dropdown"

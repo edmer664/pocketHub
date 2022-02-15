@@ -81,7 +81,7 @@
             </div>
 
             @foreach ($comments as $comment)
-            <div class="card my-2 container">
+            <div class="card my-3 container">
 
                 <div class="row">
                     <div class="col-auto pt-1">
