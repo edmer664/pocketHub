@@ -46,8 +46,9 @@
                                     </div>
                             </div>
                             <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary" id="uploadImageBtn" disabled>Upload</button>
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-primary">Upload</button>
+                                
                             </div>
                             </form>
                         </div>
@@ -106,7 +107,7 @@
                                     </div>
                                     <div class="form-group row">
                                         <div class="offset-sm-2 col-sm-10">
-                                            <button type="submit" class="btn btn-success">Save Changes</button>
+                                            <button type="submit" class="btn btn-success" id="userInfoFormBtn" disabled>Save Changes</button>
                                             <a class="btn btn-secondary"  href="{{ route('profile') }}">Cancel</a>
                                         </div>
                                     </div>
@@ -145,7 +146,7 @@
                                     </div>
                                     <div class="form-group row">
                                         <div class="offset-sm-2 col-sm-10">
-                                            <button type="submit" class="btn btn-success">Save Changes</button>
+                                            <button type="submit" class="btn btn-success" id="userPasswordFormBtn" disabled>Save Changes</button>
                                             <a class="btn btn-secondary"  href="{{ route('profile') }}">Cancel</a>
                                         </div>
                                     </div>
@@ -176,7 +177,7 @@
                                     </div>
                                     <div class="form-group row">
                                         <div class="offset-sm-2 col-sm-10">
-                                            <button type="submit" class="btn btn-danger">Deactivate</button>
+                                            <button type="submit" class="btn btn-danger" id="deactivateFormBtn" disabled>Deactivate</button>
                                             <a class="btn btn-secondary"  href="{{ route('profile') }}">Cancel</a>
                                         </div>
                                     </div>
