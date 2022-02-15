@@ -29,9 +29,11 @@ Route::group(['middleware'=>['auth','PreventBackHistory']], function(){
     Route::put('upload-avatar', [UserController::class, 'uploadAvatar'])->name('uploadAvatar');
     Route::delete('deactivate', [UserController::class, 'deactivate'])->name('deactivate');
 
-    Route::post('creat-poste', [PostController::class, 'create'])->name('createPost');
+    Route::post('create-post', [PostController::class, 'create'])->name('createPost');
     Route::put('edit-post/{id}', [PostController::class, 'edit'])->name('editPost');
     Route::delete('delete-post/{id}', [PostController::class, 'delete'])->name('deletePost');
+    // show edit page 
+    Route::get('edit-post/{id}', [PostController::class, 'showEditForm'])->name('showEditForm');
     // show post
     Route::get('/post/{id}', [PostController::class, 'show'])->name('showPost');
     // add comment to post
