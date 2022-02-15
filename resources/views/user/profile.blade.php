@@ -82,7 +82,7 @@
                 <form action="{{ route('deletePost', $post->id) }}" method="POST">
                     @csrf
                     @method('DELETE')
-                   <button class="dropdown-item" type="button">Delete</button>
+                   <button class="dropdown-item" type="submit">Delete</button>
                 </form>
                 
             </div>
