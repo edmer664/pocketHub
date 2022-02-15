@@ -137,18 +137,17 @@ window.onload = () => {
                     src="/storage/avatars/${conversation.user.avatar_path}" alt="">
                 `;
                 }
-
                 container.innerHTML += `
                     <div class="card border-0 py-4 ">
-                        <button onclick="changeMessages(${conversation.id},${conversation.user.id})">
-                            <div class=" border-bottom border-dark ">
+                        <button onclick="changeMessages(${conversation.id},${conversation.user.id})" class="bg-transparent border-primary">
+                            <div class=" border-dark ">
                                 <div class="d-flex">
                                     <div class="pr-2">
                                     ${image}
                                     </div>
                                     <div class="pb-2">
                                         <span>${conversation.user.first_name} ${conversation.user.last_name}</span>
-                                        <p> ${conversation.lastMessage.body} <small class="pl-5">${conversation.time}</small></p>
+                                        <p class="m-3"> ${conversation.lastMessage.body} <small class="pl-5">${conversation.time}</small></p>
                                     </div>
                                 </div>
                             </div>

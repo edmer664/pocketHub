@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="card mb-3 w-100">
+<div class="card mb-3 w-100 border-0" style="max-width:1200px">
     <div class="row no-gutters">
         <div class="col-lg-2">
             @if (Auth::user()->avatar_path == null)
@@ -14,7 +14,7 @@
                 width="150" height="150">
             @endif
         </div>
-        <div class="col-md-8">
+        <div class="col-md-8 ml-3">
             <div class="card-body">
                 <h5 class="card-title">{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</h5>
                 <p class="card-text">{{ Auth::user()->email }}</p>
@@ -106,7 +106,7 @@
             @endif
         </a>
         <a type="button" class="btn btn-primary btn-sm mb-3"href="{{ route('showPost', ['id' => $post->id]) }}"><i
-                class="fa-solid fa-comment p-1 "></i>Add Comment</a>
+                class="fa-solid fa-comment p-1 "></i>Comment</a>
     </div>
 </div>
 @endforeach
