@@ -106,6 +106,7 @@ class MessageController extends Controller
         $conversation = Conversation::where('sender_id', $request->user()->id)->orWhere('receiver_id', $request->user()->id)
             ->where('sender_id', $id)->orWhere('receiver_id',$id)->first();
         if($conversation){
+            Log::info("New Entry Request: ");
             Log::info("Current user: " . $request->user()->id);
             Log::info("Other user: " . $conversation->sender_id);
             Log::info("Current conversation: " . $conversation->id);
@@ -116,6 +117,7 @@ class MessageController extends Controller
                 return response()->json($conversation);
             }else{
                 Log::info("Condition not met");
+                return response()->json(null);
             }
         }else{
 
