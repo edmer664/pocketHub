@@ -19,18 +19,6 @@ class PostController extends Controller
         return redirect()->back();
     }
 
-    //edit user post
-    public function edit(Request $request, $id){
-        $post = Post::find($id);
-        if(!$post){
-            return redirect()->route('home');
-        }
-        $author = $post->author_id;
-        $user = User::find($author);
-
-        return view('post.edit', compact('post','user'));
-    }
-
     public function update(Request $request, $id){
         $post = Post::find($id);
         $post->content = $request->content;
@@ -41,7 +29,13 @@ class PostController extends Controller
     // show edit post form
     public function showEditForm($id){
         $post = Post::find($id);
-        return view('post.edit', compact('post'));
+        if(!$post){
+            return redirect()->route('home');
+        }
+        $author = $post->author_id;
+        $user = User::find($author);
+
+        return view('post.edit', compact('post','user'));
     }
 
 

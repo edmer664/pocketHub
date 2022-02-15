@@ -27,7 +27,7 @@
                                     <i class="fas fa-ellipsis-v"></i>
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu2">
-                                    <a href="{{ route('editPost',$post->id)}}" class="dropdown-item">Edit</a>
+                                    <a href="{{ route('showEditForm',$post->id)}}" class="dropdown-item">Edit</a>
                                     <form method="POST" action="{{ route('deletePost',$post->id)}}">
                                         @csrf
                                         @method('DELETE')

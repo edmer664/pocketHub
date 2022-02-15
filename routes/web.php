@@ -30,7 +30,6 @@ Route::group(['middleware'=>['auth','PreventBackHistory']], function(){
     Route::delete('deactivate', [UserController::class, 'deactivate'])->name('deactivate');
 
     Route::post('create-post', [PostController::class, 'create'])->name('createPost');
-    Route::get('edit-post/{id}', [PostController::class, 'edit'])->name('editPost');
     Route::put('edit-post/{id}', [PostController::class, 'update'])->name('updatePost');
     Route::delete('delete-post/{id}', [PostController::class, 'delete'])->name('deletePost');
     // show edit page 
