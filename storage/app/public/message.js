@@ -137,21 +137,27 @@ window.onload = () => {
                     src="/storage/avatars/${conversation.user.avatar_path}" alt="">
                 `;
                 }
+                const username = `${conversation.user.first_name} ${conversation.user.last_name}`;
                 container.innerHTML += `
-                    <div class="card border-0 py-4 ">
-                        <button onclick="changeMessages(${conversation.id},${conversation.user.id})" class="bg-transparent border-primary">
-                            <div class=" border-dark ">
+                    <div class="card border-0 py-2 m-1">
+                        <a href="#" onclick="changeMessages(${conversation.id},${conversation.user.id})" class="bg-transparent border-0 text-decoration-none text-dark">
+                            <div class=" border-dark border-bottom">
                                 <div class="d-flex">
                                     <div class="pr-2">
                                     ${image}
                                     </div>
                                     <div class="pb-2">
-                                        <span>${conversation.user.first_name} ${conversation.user.last_name}</span>
-                                        <p class="m-3"> ${conversation.lastMessage.body} <small class="pl-5">${conversation.time}</small></p>
+                                        <span>${username.substring(0,20)}</span>
+                                        <div class="d-flex justify-content-evenly">
+                                         <p class="">
+                                         ${conversation.lastMessage.body.substring(0,12)}
+                                         </p>
+                                         <small class="pl-5">${conversation.time}</small>
+                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </button>
+                        </a>
                     </div>`;
             });
         });
