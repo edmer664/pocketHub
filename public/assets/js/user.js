@@ -4,7 +4,11 @@ $.ajaxSetup({
     }
 });
 
+
 $(function () {
+    $('#userInfoForm').on('input change', function() {
+        $('#userInfoFormBtn').attr('disabled', false);
+      });
     $('#userInfoForm').on('submit', function (e) {
         e.preventDefault();
         $.ajax({
@@ -32,6 +36,10 @@ $(function () {
         });
     });
 
+    $('#userPasswordForm').on('input change', function() {
+        $('#userPasswordFormBtn').attr('disabled', false);
+    });
+
     $('#userPasswordForm').on('submit', function (e) {
         e.preventDefault();
         $.ajax({
@@ -55,6 +63,10 @@ $(function () {
                 }
             }
         });
+    });
+
+    $('#uploadImage').on('input change', function() {
+        $('#uploadImageBtn').attr('disabled', false);
     });
 
     $('#uploadImage').on('submit', function (e) {
@@ -91,6 +103,10 @@ $(function () {
                 }
             }
         });
+    });
+
+    $('#deactivateForm').on('input change', function() {
+        $('#deactivateFormBtn').attr('disabled', false);
     });
 
     $('#deactivateForm').on('submit', function (e) {
