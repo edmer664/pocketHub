@@ -30,8 +30,11 @@
     <div class="col d-none d-sm-inline-block h-100">
         <div class="d-flex  flex-column  w-100 h-100 ">
             <div class="p-2 ">
+
                 <div class="py-2" id="conversation-details">
-                   <h5  id="user-name" class="font-weight-bold p-3"></h5>
+                    <img id="user-image" src="img/undraw_profile.svg" class="rounded-circle float-left m-2 " width="50px"
+                        alt="...">
+                   <h5  id="user-name" class="font-weight-bold p-3">Jane Doe</h5>
                 </div>
                 <hr>
             </div>
