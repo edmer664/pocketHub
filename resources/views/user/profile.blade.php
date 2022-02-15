@@ -55,7 +55,7 @@
     </div>
 </div>
 
-<h4 class="my-3">Posts</h4>
+<h3 class="my-3" style="color:#4267d6">Posts</h3>
 @foreach ($posts as $post)
 <div class="card my-3 ">
     <div class="row">

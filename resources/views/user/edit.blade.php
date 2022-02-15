@@ -4,7 +4,7 @@
 <div class="content-header">
     <div class="content">
         <div class="row w-100">
-            <div class="col-md-3 text-center">
+            <div class="col-md-4 text-center">
                 @if (Auth::user()->avatar_path == null)
                 <img class=" py-2 rounded-circle default-avatar" width="200" height="200"
                     src="https://avatars.dicebear.com/api/initials/{{substr(Auth::user()->first_name, 0, 1) . substr(Auth::user()->last_name, 0, 1)}}.svg?backgroundColorLevel=300&fontSize=35"
