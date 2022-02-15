@@ -19,14 +19,25 @@ class PostController extends Controller
         return redirect()->back();
     }
 
-    //edit user post
-    public function edit(Request $request, $id){
+    public function update(Request $request, $id){
         $post = Post::find($id);
         $post->content = $request->content;
         $post->save();
 
-        return redirect()->back();
+        return redirect()->route('showPost', ['id' => $id]);
     }
+    // show edit post form
+    public function showEditForm($id){
+        $post = Post::find($id);
+        if(!$post){
+            return redirect()->route('home');
+        }
+        $author = $post->author_id;
+        $user = User::find($author);
+
+        return view('post.edit', compact('post','user'));
+    }
+
 
     //delete user post
     public function delete(Request $request, $id){
@@ -51,7 +62,7 @@ class PostController extends Controller
         foreach($comments as $comment){
             $comment->user = User::find($comment->user_id);
         }
-        return view('post', compact('post', 'comments','user'));
+        return view('post.post', compact('post', 'comments','user'));
     }
 
     // add comment to post

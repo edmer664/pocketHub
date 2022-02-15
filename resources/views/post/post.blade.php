@@ -20,15 +20,19 @@
                             <div class="col">
                                 <h4 class="mt-4"> {{ $user->first_name . " " . $user->last_name }} </h4>
                             </div>
-                            <div class="col-auto " >
+                            <div class="col-auto ">
                                 @if ($user->id == Auth::user()->id)
                                 <button class="btn" type="button" id="dropdownMenu2" data-toggle="dropdown"
                                     aria-haspopup="true" aria-expanded="false">
                                     <i class="fas fa-ellipsis-v"></i>
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu2">
-                                    <button class="dropdown-item" type="button">Edit</button>
-                                    <button class="dropdown-item" type="button">Delete</button>
+                                    <a href="{{ route('showEditForm',$post->id)}}" class="dropdown-item">Edit</a>
+                                    <form method="POST" action="{{ route('deletePost',$post->id)}}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="dropdown-item" type="submit">Delete</button>
+                                    </form>
                                 </div>
                                 @endif
                             </div>
@@ -101,7 +105,6 @@
                             <i class="fas fa-ellipsis-v"></i>
                         </button>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu2">
-                            <button class="dropdown-item" type="button">Edit</button>
                             <form method="POST" action="{{ route('deleteComment',$comment->id)}}">
                                 @csrf
                                 @method('DELETE')

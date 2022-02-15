@@ -82,6 +82,7 @@ const changeMessages = (id, user_id) => {
     fetch("/api/conversations/" + id + "/messages")
         .then((res) => res.json())
         .then((res) => {
+            res.reverse();
             let mes = document.getElementById("message-container");
             mes.innerHTML = "";
             document.getElementById("message_form").action =
