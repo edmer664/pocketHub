@@ -25,17 +25,17 @@
                     </div>
                 </div>
                 <div class="card-body text-justify">
-                    <form action="{{ route('updatePost',$post->id)}}" method="POST">
+                    <form action="{{ route('updatePost',$post->id)}}" method="POST" id="editPost">
                         {{ csrf_field() }}
                         @method('PUT')
                         <div class="row py-2 mr-3 ml-2">
                             <div class="input-group">
                                 <textarea class="form-control custom-control " 
-                                    name='content' rows="8" style="resize:none"> {{ $post->content }}</textarea>
+                                    name='content' rows="8" style="resize:none" required> {{ $post->content }}</textarea>
                             </div>
                         </div>
                         <div class="row justify-content-end mx-3">
-                            <button type="submit" class="input-group-addon btn btn-primary mb-2 m-2">Update</button>
+                            <button type="submit" class="input-group-addon btn btn-primary mb-2 m-2" id="editPostBtn" disabled>Update</button>
                             <a href="{{route('home')}}" class="input-group-addon btn btn-secondary mb-2 m-2">Cancel</a>
                         </div>
                     </form>

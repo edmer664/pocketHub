@@ -8,7 +8,7 @@ $.ajaxSetup({
 $(function () {
     $('#userInfoForm').on('input change', function() {
         $('#userInfoFormBtn').attr('disabled', false);
-      });
+    });
     $('#userInfoForm').on('submit', function (e) {
         e.preventDefault();
         $.ajax({
