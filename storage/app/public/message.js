@@ -182,7 +182,7 @@ const startConversation = (receiver_id, sender_id) => {
         .then((res) => {
             let conversation = res;
             console.log(res);
-            if (res == null) {
+            if (Object.keys(res).length === 0) {
                 isNull = true;
             }
             if (isNull) {
