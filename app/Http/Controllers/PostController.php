@@ -27,6 +27,12 @@ class PostController extends Controller
 
         return redirect()->back();
     }
+    // show edit post form
+    public function showEditForm($id){
+        $post = Post::find($id);
+        return view('post.edit', compact('post'));
+    }
+
 
     //delete user post
     public function delete(Request $request, $id){
