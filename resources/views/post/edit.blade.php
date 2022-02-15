@@ -31,7 +31,7 @@
                         <div class="row py-2 mr-3 ml-2">
                             <div class="input-group">
                                 <textarea class="form-control custom-control " 
-                                    name='content' rows="3" style="resize:none"> {{ $post->content }}</textarea>
+                                    name='content' rows="8" style="resize:none"> {{ $post->content }}</textarea>
                             </div>
                         </div>
                         <div class="row justify-content-end mx-3">
