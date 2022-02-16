@@ -51,7 +51,7 @@
                 </div>
             </div>
             <h3 class="my-3" style="color:#4267d6">Comments</h3>
-            <div class="card border-left-primary shadow container">
+            <div class="card border-left-danger shadow container">
                 <div class="row  ">
                     <div class="col-auto py-3 d-none d-sm-inline-block">
                         @if (Auth::user()->avatar_path == null)
@@ -73,7 +73,7 @@
                                 </div>
                             </div>
                             <div class="row justify-content-end mx-3">
-                                <button type="submit" class="input-group-addon btn btn-primary mb-2" id="addCommentBtn" disabled>Post</button>
+                                <button type="submit" class="input-group-addon btn btn-danger mb-2" id="addCommentBtn" disabled>Post</button>
                             </div>
                         </form>
                     </div>

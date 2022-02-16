@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="card border-left-primary shadow pt-3">
+<div class="card border-left-danger shadow pt-3">
     <div class="row  ">
         <div class="col-auto py-3 d-none d-sm-inline-block pl-4">
             @if (Auth::user()->avatar_path == null)
@@ -24,13 +24,13 @@
                     </div>
                 </div>
                 <div class="row justify-content-end mx-3">
-                    <button type="submit" class="input-group-addon btn btn-primary mb-2" id="createPostHomeBtn" disabled>Post</button>
+                    <button type="submit" class="input-group-addon btn btn-danger mb-2" id="createPostHomeBtn" disabled>Post</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
-<h3 class="my-3" style="color:#4267d6">Posts</h3>
+<h3 class="my-3" style="color:#e72727">Posts</h3>
 @foreach ($posts as $post)
 <div class="card my-3 ">
     <div class="row">
@@ -88,7 +88,7 @@
             {{ $post->comments }} Comments
             @endif
         </a>
-        <a type="button" href="{{ route('showPost', ['id' => $post->id]) }}" class="btn btn-primary btn-sm mb-3">
+        <a type="button" href="{{ route('showPost', ['id' => $post->id]) }}" class="btn btn-danger btn-sm mb-3">
             <i class="fa-solid fa-comment p-1 "></i>Comment</a>
         </a>
 
