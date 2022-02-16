@@ -35,7 +35,7 @@
                             </div>
                         </div>
                         <div class="row justify-content-end mx-3">
-                            <button type="submit" class="input-group-addon btn btn-primary mb-2 m-2" id="editPostBtn" disabled>Update</button>
+                            <button type="submit" class="input-group-addon btn btn-danger mb-2 m-2" id="editPostBtn" disabled>Update</button>
                             <a href="{{route('home')}}" class="input-group-addon btn btn-secondary mb-2 m-2">Cancel</a>
                         </div>
                     </form>

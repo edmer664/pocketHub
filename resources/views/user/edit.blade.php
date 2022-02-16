@@ -16,7 +16,7 @@
                 @endif
                 <img class=" py-2 rounded-circle avatar d-none" width="200" height="200"
                     src="{{ url('storage/avatars/' . Auth::user()->avatar_path) }}" alt="">
-                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#staticBackdrop">
+                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#staticBackdrop">
                     Upload Image
                 </button>
             </div>
@@ -46,7 +46,7 @@
                                     </div>
                             </div>
                             <div class="modal-footer">
-                                <button type="submit" class="btn btn-primary" id="uploadImageBtn" disabled>Upload</button>
+                                <button type="submit" class="btn btn-danger" id="uploadImageBtn" disabled>Upload</button>
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                 
                             </div>

@@ -93,7 +93,7 @@ const changeMessages = (id, user_id) => {
                 if (message.sender_id === user.id) {
                     mes.innerHTML += 
                     `<div class="d-flex justify-content-end mb-4">
-                            <p class="p-2 my-1 mx-2 rounded bg-primary text-white">
+                            <p class="p-2 my-1 mx-2 rounded bg-danger text-white">
                                 ${message.body}
                             </p>
                             <div class="img_cont_msg ">
