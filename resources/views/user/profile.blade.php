@@ -19,14 +19,14 @@
                 <h5 class="card-title">{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</h5>
                 <p class="card-text">{{ Auth::user()->email }}</p>
                 <p class="card-text"><small class="text-muted">Joined {{ Auth::user()->created_at }}</small></p>
-                <a type="button" class="btn btn-primary btn-sm mb-3" href="{{ route('editInfo') }}">
+                <a type="button" class="btn btn-danger btn-sm mb-3" href="{{ route('editInfo') }}">
                     Edit Profile
                 </a>
             </div>
         </div>
     </div>
 </div>
-<div class="card border-left-primary shadow">
+<div class="card border-left-danger shadow">
     <div class="row  ">
         <div class="col-auto py-3 d-none d-sm-inline-block pl-4">
             @if (Auth::user()->avatar_path == null)
@@ -48,7 +48,7 @@
                     </div>
                 </div>
                 <div class="row justify-content-end mx-3">
-                    <button type="submit" class="input-group-addon btn btn-primary mb-2" id="createPostProfileBtn" disabled>Post</button>
+                    <button type="submit" class="input-group-addon btn btn-danger mb-2" id="createPostProfileBtn" disabled>Post</button>
                 </div>
             </form>
         </div>
@@ -105,7 +105,7 @@
                 {{ $post->comments_count }} comments
             @endif
         </a>
-        <a type="button" class="btn btn-primary btn-sm mb-3"href="{{ route('showPost', ['id' => $post->id]) }}"><i
+        <a type="button" class="btn btn-danger btn-sm mb-3"href="{{ route('showPost', ['id' => $post->id]) }}"><i
                 class="fa-solid fa-comment p-1 "></i>Comment</a>
     </div>
 </div>

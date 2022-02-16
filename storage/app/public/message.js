@@ -22,7 +22,8 @@ const initConv = (receiver_id, sender_id) => {
             body: message_form,
             headers: myHeaders,
         })
-        window.location.reload()  
+        console.log("Message sent to /api/conversations/" + res.conversation_id + "/send");
+        // window.location.reload()  
         });
     // send message
 };
@@ -92,7 +93,7 @@ const changeMessages = (id, user_id) => {
                 if (message.sender_id === user.id) {
                     mes.innerHTML += 
                     `<div class="d-flex justify-content-end mb-4">
-                            <p class="p-2 my-1 mx-2 rounded bg-primary text-white">
+                            <p class="p-2 my-1 mx-2 rounded bg-danger text-white">
                                 ${message.body}
                             </p>
                             <div class="img_cont_msg ">
@@ -177,12 +178,13 @@ const startConversation = (receiver_id, sender_id) => {
     // paki initi
     fetch("/api/conversations/check/" + receiver_id)
         .then((res) => {
-            console.log(res);
-             res.json()})
+            return res.clone().json();
+            
+        })
         .then((res) => {
-            let conversation = res;
+            
             console.log(res);
-            if (Object.keys(res).length === 0) {
+            if (res.is_found === false) {
                 isNull = true;
             }
             if (isNull) {
@@ -190,8 +192,12 @@ const startConversation = (receiver_id, sender_id) => {
                 document.getElementById("message-container").innerHTML =
                     "<h1>No conversation</h1>";
                 const btn = document.getElementById("send-btn");
-                btn.onclick = () => {
-                    initConv(receiver_id, sender_id);
+                btn.onclick = async() => {
+                    await initConv(receiver_id, sender_id);
+
+                    setTimeout(() => {
+                        window.location.reload()
+                    }, 1000); 
                 };
                 btn.type = "button";
                 document.getElementById("message_form").action = "";
@@ -219,13 +225,13 @@ const startConversation = (receiver_id, sender_id) => {
                             res.user.first_name + " " + res.user.last_name;
                     });
             } else {
-                console.log(conversation);
-                if (conversation.sender_id == sender_id) {
-                    changeMessages(conversation.id, conversation.receiver_id);
-                    console.log(conversation.receiver_id);
+                console.log(res);
+                if (res.sender_id == sender_id) {
+                    changeMessages(res.id, res.receiver_id);
+                    console.log(res.receiver_id);
                 } else {
-                    changeMessages(conversation.id, conversation.sender_id);
-                    console.log(conversation.receiver_id);
+                    changeMessages(res.id, res.sender_id);
+                    console.log(res.receiver_id);
                 }
             }
         });
