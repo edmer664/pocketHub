@@ -20,6 +20,7 @@ class MessageController extends Controller
     }
     //send message
     public function send(Request $request,$id){
+        Log::info("messageController: send");
         $message = new Message();
         $message->sender_id = $request->user()->id;
         $message->conversation_id = $id;
@@ -39,6 +40,7 @@ class MessageController extends Controller
         $conversation->receiver_id = $request->receiver_id;
         $conversation->save();
         // return conversation id as json
+        Log::info("messageController: createCoversation");
         return response()->json(['conversation_id'=>$conversation->id]);
         
         
@@ -64,15 +66,24 @@ class MessageController extends Controller
             }else{
                 $user = User::find($conversation->sender_id);
             }
-            $conversation->lastMessage = $lastMessage;
-            $conversation->time = $lastMessage->created_at->diffForHumans();
-            $conversation->user = $user;
+            if($lastMessage){
+
+                $conversation->lastMessage = $lastMessage;
+                $conversation->time = $lastMessage->created_at->diffForHumans();
+                $conversation->user = $user;
+            }
         };
         $conversations = $conversations->toArray();
         // sort conversations by last message
-        usort($conversations, function($a, $b) {
-            return $b['lastMessage']['created_at'] <=> $a['lastMessage']['created_at'];
-        });
+
+        try{
+
+            usort($conversations, function($a, $b) {
+                return $b['lastMessage']['created_at'] <=> $a['lastMessage']['created_at'];
+            });
+        }catch(Exception $e){
+            Log::info($e);
+        }
         $conversations = collect($conversations);
 
 
@@ -112,16 +123,28 @@ class MessageController extends Controller
             Log::info("Current conversation: " . $conversation->id);
             Log::info("Receiver Id " . $conversation->receiver_id);
 
-            if(($conversation->sender_id == $request->user()->id || $conversation->receiver_id == $request->user()->id) && ($conversation->sender_id == $id || $conversation->receiver_id == $id)){
-                Log::info("Condition Met");
-                return response()->json($conversation);
+            if($conversation->sender_id == $request->user()->id || $conversation->receiver_id == $request->user()->id){
+                if($conversation->sender_id == $id || $conversation->receiver_id == $id){
+
+                    Log::info("Condition Met line 118");
+                    $conversation->is_found = true;
+                    return response()->json($conversation);
+                }
+                else{
+                    Log::info("Condition Not Met line 123");
+                    $conversation->is_found = false;
+                    return response()->json($conversation);
+                }
             }else{
-                Log::info("Condition not met");
-                return response()->json(null);
+                Log::info("Condition not met line 128");
+                $conversation->is_found = false;
+                return response()->json($conversation);
             }
         }else{
-
-        return response()->json(null);
+            Log::info("Conversation not found line 133");
+            
+            return response()->json(['is_found'=>false]);
+            
         }
     }
     
