@@ -121,38 +121,45 @@ class MessageController extends Controller
     // check if conversation exist then return conversation
     public function checkConversation(Request $request,$id){
         // check if conversation exists
-        $conversation = Conversation::where('sender_id', $request->user()->id)->orWhere('receiver_id', $request->user()->id)
-            ->where('sender_id', $id)->orWhere('receiver_id',$id)->first();
+        $conversation = Conversation::where('sender_id', $request->user()->id)->where('receiver_id', $id)->orWhere('sender_id', $id)->where('receiver_id', $request->user()->id)->first();
         if($conversation){
-            Log::info("New Entry Request: ");
-            Log::info("Current user: " . $request->user()->id);
-            Log::info("Other user: " . $conversation->sender_id);
-            Log::info("Current conversation: " . $conversation->id);
-            Log::info("Receiver Id " . $conversation->receiver_id);
-
-            if($conversation->sender_id == $request->user()->id || $conversation->receiver_id == $request->user()->id){
-                if($conversation->sender_id == $id || $conversation->receiver_id == $id){
-
-                    Log::info("Condition Met line 118");
-                    $conversation->is_found = true;
-                    return response()->json($conversation);
-                }
-                else{
-                    Log::info("Condition Not Met line 123");
-                    $conversation->is_found = false;
-                    return response()->json($conversation);
-                }
-            }else{
-                Log::info("Condition not met line 128");
-                $conversation->is_found = false;
-                return response()->json($conversation);
-            }
+            $conversation->is_found = true;
+            return response()->json($conversation);
         }else{
-            Log::info("Conversation not found line 133");
             
             return response()->json(['is_found'=>false]);
-            
         }
+    
+        // if($conversation){
+        //     Log::info("New Entry Request: ");
+        //     Log::info("Current user: " . $request->user()->id);
+        //     Log::info("Other user: " . $conversation->sender_id);
+        //     Log::info("Current conversation: " . $conversation->id);
+        //     Log::info("Receiver Id " . $conversation->receiver_id);
+
+        //     if($conversation->sender_id == $request->user()->id || $conversation->receiver_id == $request->user()->id){
+        //         if($conversation->sender_id == $id || $conversation->receiver_id == $id){
+
+        //             Log::info("Condition Met line 118");
+        //             $conversation->is_found = true;
+        //             return response()->json($conversation);
+        //         }
+        //         else{
+        //             Log::info("Condition Not Met line 123");
+        //             $conversation->is_found = false;
+        //             return response()->json($conversation);
+        //         }
+        //     }else{
+        //         Log::info("Condition not met line 128");
+        //         $conversation->is_found = false;
+        //         return response()->json($conversation);
+        //     }
+        // }else{
+        //     Log::info("Conversation not found line 133");
+            
+        //     return response()->json(['is_found'=>false]);
+            
+        // }
     }
     
 
