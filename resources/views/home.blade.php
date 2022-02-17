@@ -30,7 +30,7 @@
         </div>
     </div>
 </div>
-<h3 class="my-3" style="color:#e72727">Posts</h3>
+<h3 class="my-3 text-danger">Posts</h3>
 @foreach ($posts as $post)
 <div class="card my-3 ">
     <div class="row">
