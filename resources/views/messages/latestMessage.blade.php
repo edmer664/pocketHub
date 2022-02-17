@@ -33,13 +33,15 @@
 
                 <div class="py-2" id="conversation-details">
                     <img id="user-image" src="img/undraw_profile.svg" class="rounded-circle float-left m-2 " width="50px"
-                        alt="...">
-                   <h5  id="user-name" class="font-weight-bold p-3">Jane Doe</h5>
+                        alt="">
+                   <h5  id="user-name" class="font-weight-bold p-3"></h5>
                 </div>
                 <hr>
             </div>
             <div  id="message-container" class="p-2 overflow-auto h-75 d-flex flex-column-reverse">
-                
+                <div class="container row w-100 h-100  align-items-center justify-content-center" >
+                    <img class="w-50  h-50 " src="{{ asset('assets/img/undraw_no_message.svg')}}" alt="">
+                </div>
             </div>
 
             <div class="align-items-end ">
@@ -53,7 +55,7 @@
                         </button>
                     </form>
                     
-                </div>
+                </div> 
             </div>
         </div>
     </div>
