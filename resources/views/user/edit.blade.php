@@ -59,15 +59,15 @@
                 <div class="tab-content">
                     <ul class="nav nav-tabs" id="tab" role="tablist">
                         <li class="nav-item" role="presentation">
-                            <a class="nav-link active" id="profile-tab" data-toggle="tab" href="#profileInfo" role="tab"
+                            <a class="nav-link active text-danger" id="profile-tab" data-toggle="tab" href="#profileInfo" role="tab"
                                 aria-controls="profile" aria-selected="true">Profile</a>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <a class="nav-link" id="password-tab" data-toggle="tab" href="#changePassword" role="tab"
+                            <a class="nav-link text-danger" id="password-tab" data-toggle="tab" href="#changePassword" role="tab"
                                 aria-controls="password" aria-selected="false">Password</a>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <a class="nav-link" id="password-tab" data-toggle="tab" href="#deactivate" role="tab"
+                            <a class="nav-link text-danger" id="password-tab" data-toggle="tab" href="#deactivate" role="tab"
                                 aria-controls="password" aria-selected="false">Deactivate</a>
                         </li>
                     </ul>
