@@ -140,7 +140,7 @@ window.onload = () => {
                 }
                 const username = `${conversation.user.first_name} ${conversation.user.last_name}`;
                 container.innerHTML += `
-                <a href="#" onclick="startConversation(${conversation.id},${conversation.user.id})" class=" text-decoration-none">
+                <a href="#" onclick="changeMessages(${conversation.id},${conversation.user.id})" class=" text-decoration-none">
                     <div class=" card  border-0  ">
                         <div class="row align-items-center border-bottom border-dark " >
                             <div class="col-auto" >
@@ -241,6 +241,7 @@ const searchUser = () => {
     fetch("/api/users/search/" + search_input)
         .then((res) => res.json())
         .then((res) => {
+            document.getElementById("conv-container").innerHTML = "";
             res.map((result) => {
                 if (result.avatar_path == null) {
                     image = `<img class="rounded-circle  m-3" width="60" height="60"
@@ -255,7 +256,7 @@ const searchUser = () => {
                     src="/storage/avatars/${result.avatar_path}" alt="">
                 `;
                 }
-                document.getElementById("conv-container").innerHTML = `
+                document.getElementById("conv-container").innerHTML += `
                 <a href="#" onclick="startConversation(${result.id},${user.id})" class="text-decoration-none">
                     <div class=" m-1">
                         <div class="row">
