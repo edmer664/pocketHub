@@ -7,6 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'PocketHub') }}</title>
+    <link rel="icon" href="{{ asset('assets/img/round_logo2.png')}}"></link>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
         integrity="sha256-MsxKR7Nw4ngHKmRAJJhy5oHvodmSYAQgwDqWMdqIXXA=" crossorigin="anonymous">
     <link href="{{asset('assets/vendors/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">

@@ -6461,7 +6461,7 @@ button.bg-warning:focus {
 }
 
 .bg-danger {
-  background-color: #e74a3b !important;
+  background-color: #b82403 !important;
 }
 
 a.bg-danger:hover, a.bg-danger:focus,
@@ -9930,8 +9930,8 @@ a:focus {
 }
 
 .bg-gradient-danger {
-  background-color: #e74a3b;
-  background-image: linear-gradient(180deg, #e74a3b 10%, #be2617 100%);
+  background-color: #b82403;
+  background-image: linear-gradient(180deg, #b82403 10%, #be2617 100%);
   background-size: cover;
 }
 
