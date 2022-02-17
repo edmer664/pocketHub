@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 shadow sticky-top">
     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-        <i class="fa fa-bars"></i>
+        <i class="fa fa-bars text-danger"></i>
     </button>
     <div class="topbar-divider d-none d-sm-block"></div>
     @auth
