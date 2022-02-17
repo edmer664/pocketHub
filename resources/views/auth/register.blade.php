@@ -58,13 +58,13 @@
                                     <input id="password-confirm" type="password" class="form-control form-control-user" name="password_confirmation" required autocomplete="new-password" placeholder="{{ __('Confirm Password') }}">
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary btn-user btn-block">
+                            <button type="submit" class="btn btn-primary btn-user btn-block bg-gradient-danger border-0">
                                 {{ __('Register') }}
                             </button>
                         </form>
                         <hr>
                         <div class="text-center">
-                            <a class="small" href="{{ route('login') }}">Already have an account? Login!</a>
+                            <a class="small text-danger" href="{{ route('login') }}">Already have an account? Login!</a>
                         </div>
                     </div>
                 </div>
