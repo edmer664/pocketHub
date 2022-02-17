@@ -140,26 +140,24 @@ window.onload = () => {
                 }
                 const username = `${conversation.user.first_name} ${conversation.user.last_name}`;
                 container.innerHTML += `
-                    <div class="card border-0 py-2 m-1">
-                        <a href="#" onclick="changeMessages(${conversation.id},${conversation.user.id})" class="bg-transparent border-0 text-decoration-none text-dark">
-                            <div class=" border-dark border-bottom">
-                                <div class="d-flex">
-                                    <div class="pr-2">
-                                    ${image}
-                                    </div>
-                                    <div class="pb-2">
-                                        <span>${username.substring(0,20)}</span>
-                                        <div class="d-flex justify-content-evenly">
-                                         <p class="">
-                                         ${conversation.lastMessage.body.substring(0,12)}
-                                         </p>
-                                         <small class="pl-5">${conversation.time}</small>
-                                         </div>
-                                    </div>
+                <a href="#" onclick="startConversation(${conversation.id},${conversation.user.id})" class=" text-decoration-none">
+                    <div class=" card  border-0  ">
+                        <div class="row align-items-center border-bottom border-dark " >
+                            <div class="col-auto" >
+                                ${image}
+                            </div>
+                            <div class="col">
+                                <div class="row">
+                                    <span class="text-muted ">${username.substring(0,20)}</span>
+                                </div>
+                                <div class="row">
+                                    <div class="col text-muted"> ${conversation.lastMessage.body.substring(0,12)}</div>
+                                    <div class="col-auto align-self-end text-muted"> <small >${conversation.time} </small></div>
                                 </div>
                             </div>
-                        </a>
-                    </div>`;
+                        </div>
+                    </div>    
+                </a>`;
             });
         });
 };
@@ -258,8 +256,8 @@ const searchUser = () => {
                 `;
                 }
                 document.getElementById("conv-container").innerHTML = `
-                <a href="#" onclick="startConversation(${result.id},${user.id})" class="link-dark text-decoration-none">
-                    <div class=" card p-2 m-1">
+                <a href="#" onclick="startConversation(${result.id},${user.id})" class="text-decoration-none">
+                    <div class=" m-1">
                         <div class="row">
                             <div class="col-auto">
                                 ${image}
