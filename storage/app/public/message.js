@@ -134,7 +134,7 @@ window.onload = () => {
                     )}.svg?backgroundColorLevel=300&fontSize=35"
                 alt="">`;
                 } else {
-                    image = `<img class="rounded-circle img-fluid" width="60" height="60"
+                    image = `<img class="rounded-circle img-fluid m-3" width="60" height="60"
                     src="/storage/avatars/${conversation.user.avatar_path}" alt="">
                 `;
                 }
