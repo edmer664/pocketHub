@@ -2,8 +2,8 @@
 <ul class="navbar-nav bg-gradient-danger sidebar sidebar-dark accordion toggled" id="accordionSidebar">
    <div class="sticky-top">
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ url('/') }}">
-        <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fas fa-laugh-wink"></i>
+        <div class="sidebar-brand-icon ">
+            <img class="rounded-circle " src="{{ asset('assets/img/logo2.svg')}}" height="40" width="40" alt="">
         </div>
         <div class="sidebar-brand-text mx-3">{{ config('app.name', 'PocketHub') }}</div>
     </a>
