@@ -45,13 +45,13 @@
                                             </label>
                                         </div>
                                     </div>
-                                    <button type="submit" class="btn btn-primary  btn-user btn-block">
+                                    <button type="submit" class="btn btn-primary bg-gradient-danger border-0 btn-user btn-block">
                                         {{ __('Login') }}
                                     </button>                            
                                 </form>
                                 <hr>
                                 <div class="text-center">
-                                    <a class="small"  href="{{ route('register') }}">Create an Account!</a>
+                                    <a class="small text-danger"  href="{{ route('register') }}">Create an Account!</a>
                                 </div>
                             </div>
                         </div>

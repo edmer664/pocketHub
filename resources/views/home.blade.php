@@ -81,7 +81,7 @@
         <small> {{ $post->created_at->diffForHumans() }}</small>
     </div>
     <div class="row justify-content-end pb-2 mr-4 ">
-        <a href="{{ route('showPost', ['id' => $post->id]) }}" class="pt-1 px-2 link-dark">
+        <a href="{{ route('showPost', ['id' => $post->id]) }}" class="pt-1 px-2 link-dark text-danger">
             @if($post->comments == 0)
                 No comments
             @else
