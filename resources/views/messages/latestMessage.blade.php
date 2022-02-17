@@ -27,7 +27,7 @@
             {{-- end --}}
         </div>
     </div>
-    <div class="col d-none d-sm-inline-block h-100">
+    <div class="col d-none d-inline-block h-100">
         <div class="d-flex  flex-column  w-100 h-100 ">
             <div class="p-2 ">
 
