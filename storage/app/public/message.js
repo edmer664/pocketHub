@@ -176,6 +176,7 @@ const startConversation = (receiver_id, sender_id) => {
     // paki initi
     fetch("/api/conversations/check/" + receiver_id)
         .then((res) => {
+            console.log(receiver_id);
             return res.clone().json();
             
         })
