@@ -55,7 +55,7 @@
     </div>
 </div>
 
-<h3 class="my-3" style="color:#4267d6">Posts</h3>
+<h3 class="my-3 text-danger">Posts</h3>
 @foreach ($posts as $post)
 <div class="card my-3 ">
     <div class="row">
@@ -98,7 +98,7 @@
         <small> {{ $post->created_at->diffForHumans() }}</small>
     </div>
     <div class="row justify-content-end pb-2 mr-4 ">
-        <a href="{{ route('showPost', ['id' => $post->id]) }}" class="pt-2 px-2 link-dark">
+        <a href="{{ route('showPost', ['id' => $post->id]) }}" class="pt-2 px-2 link-dark text-danger">
             @if($post->comments_count == 0)
                 No comment
             @else
