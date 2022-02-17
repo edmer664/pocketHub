@@ -103,13 +103,20 @@ class MessageController extends Controller
 
     // search conversations with first name as input
     public function searchUsers(Request $request,$name){
-        // search users where name is like first_name + last_name
-        $looked_up_users = User::where('first_name', 'like', '%'.$name.'%')
-            ->orWhere('last_name', 'like', '%'.$name.'%')->get();
-        // get conversations where looked_up_users and current user is sender or receiver
-        Log::info($looked_up_users);
-        return response()->json($looked_up_users);
+        // split name by space then iterate through each word then search for users with first name or last_name like the word
+        $names = explode(' ', $name);
+        $users = collect();
+        foreach ($names as $name) {
+            $user = User::where('first_name', 'like', '%'.$name.'%')->orWhere('last_name', 'like', '%'.$name.'%')->get();
+            $users = $users->merge($user);
+        }
+        // remove duplicates
+        $users = $users->unique();
+        
+        Log::info($users);
+        return response()->json($users);
     }
+        
 
     // check if conversation exist then return conversation
     public function checkConversation(Request $request,$id){
