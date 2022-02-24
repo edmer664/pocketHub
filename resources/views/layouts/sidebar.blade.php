@@ -1,6 +1,6 @@
 @auth
 <ul class="navbar-nav  sidebar sidebar-dark accordion toggled " id="accordionSidebar" 
-style="background-image: url('assets/img/common-bg.svg');  background-size: auto; ">
+style="background-image: url('assets/img/common-bg.svg'); background-size:cover; ">
    <div class="sticky-top">
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ url('/') }}">
         <div class="sidebar-brand-icon ">
