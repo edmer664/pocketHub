@@ -6,7 +6,7 @@ style="background-image: url('assets/img/common-bg.svg'); background-size:cover;
         <div class="sidebar-brand-icon ">
             <img class="rounded-circle" src="{{ asset('assets/img/logo2.png')}}" height="40" width="40" alt="">
         </div>
-        <div class="sidebar-brand-text mx-3">{{ config('app.name', 'PocketHub') }}</div>
+        <div class="sidebar-brand-text mx-3 pr-2 ">{{ config('app.name', 'PocketHub') }}</div>
     </a>
     <hr class="sidebar-divider my-0">
     <hr class="sidebar-divider">
